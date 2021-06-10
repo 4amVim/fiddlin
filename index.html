@@ -2,17 +2,62 @@
 <html lang="en">
 
 <head>
-    <title>A trivial todo web-thingy.</title>
-    <link href="styles/style.css" rel="stylesheet" />
+    <title>Insurance Browser</title>
+    <link href="style.css" rel="stylesheet" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+
+    <!-- REMOVE THIS -->
+    <link rel="shortcut icon" href="#">
+    <script>let Data; //Caches the fetched object</script>
+    <script src="main.js"></script>
 </head>
 
 <body>
-        <script defer src="main.js"></script>
+    <script>
+        _getData().then( data => {
+
+            console.log( data )
+
+            let cardsList = data.data;
+            for ( const card of cardsList ) {
+                console.log( card )
+                let div = document.createElement( 'div' );
+
+                let age = ( new Date() ).getFullYear() - card.Year;
+
+                div.innerHTML = `\
+                <img src=${card.Image}>
+                    <h1>\
+                        <span style="color:var(--text-brand)">${ card.Make }</span>\
+                        <span style="color:var(--text-model)">${ card.Model }</span>\
+                    </h1>\
+                    <h1 style="color:var(--text-price)">${ age }</h1>\
+                    <h1 style="color:var(--text-years)">${ card.Price }$</h1>\
+                        `;
+                let itemGrid=document.getElementById('item_grid');
+                itemGrid.appendChild(div);
+
+
+            }
+        }
+        );
+    </script>
+
+    <script>
+    </script>
+
+    <div class="main_grid">
+        <div id="item_grid">
+        <div class="navbar">
+        </div>
+
+    </div>
+    </div>
 
 </body>
 
