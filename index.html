@@ -37,11 +37,15 @@
                 let age = ( new Date() ).getFullYear() - card.Year;
 
                 div.innerHTML = `\
-                <img src=${ card.Image } >
-                    <h1 style="color:var(--text-brand)">${ card.Make }</h1>
-                    <h1 style="color:var(--text-model)">${ card.Model }</h1>
-                    <h1 style="color:var(--text-years)">${ age }</h1>\
-                    <h1 style="color:var(--text-price)">${ card.Price }$</h1>\
+                <img src=${ card.Image } >\
+                    <h1 style="grid-row:2;>
+                        <span style="color:var(--text-brand)">${ card.Make }<\span>
+                        <span style="color:var(--text-model)">${ card.Model }<\span>
+                    </h1>
+                    <h1 style="grid-row:3;">
+                        <span style="color:var(--text-price);">${ card.Price }$</span>
+                        <span style="color:var(--text-years);">${ age }</span>
+                    </h1>
                         `;
                 let itemGrid = document.getElementById( 'item_grid' );
                 div.className = 'card';
