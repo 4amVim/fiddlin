@@ -9,3 +9,60 @@ async function _getData () {
 	console.log( 'data has been parsed' );
 	return Data;
 }
+
+function priceClicked () {
+	let priceIcon = document.getElementById( 'priceIcon' );
+	let sort; //Shows us the utility of a quadratic boolean
+	switch ( priceIcon.innerHTML ) {
+		case "import_export":
+			priceIcon.innerHTML = "trending_up";
+			sort = true;
+			break;
+		case "trending_up":
+			priceIcon.innerHTML = "trending_down";
+			sort = false;
+			break;
+		case "trending_down":
+			priceIcon.innerHTML = "import_export";
+			sort = null;
+			break;
+		default:
+			console.error( "How did I come here, what am I doing?!" )
+			break;
+	}
+
+	const db = Data.data.slice();
+	sort == null ? renderList( db ) :
+		renderList( db.sort( ( a, b ) => ( ( ( a.Price <= b.Price ) && sort ) ? -1 : 1 ) ) );
+}
+
+function renderList ( cardsList ) {
+	console.log( cardsList );
+	const itemGrid = document.getElementById( 'item_grid' );
+	itemGrid.innerHTML = '';
+	for ( let i = 0; i < cardsList.length; i++ ) {
+		const card = cardsList[i];
+		console.log( card )
+		let div = document.createElement( 'div' );
+		let age = ( new Date() ).getFullYear() - card.Year;
+
+		div.innerHTML = `\
+                <div class="image-crop">
+                <img src=${ card.Image } alt='${ card.Make + ' ' + card.Model }' >
+                </div>
+                    <h1>
+                        <span style="color:var(--text-brand);">${ card.Make }<\span>
+                        <span style="color:var(--text-model);">${ card.Model }<\span>
+                    </h1>
+                    <h1>
+                        <span style="color:var(--text-price); font-family:'Manuale',serif;">${ card.Price }$</span>
+                        <span style="color:var(--text-years); float:right; ">${ age } years old</span>
+                    </h1>
+                        `;
+		div.className = 'card';
+		itemGrid.appendChild( div );
+		itemGrid.append
+
+	}
+	console.log( priceIcon.innerHTML );
+}

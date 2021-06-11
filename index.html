@@ -23,42 +23,15 @@
     </div>
     <script>
         _getData().then( data => {
-
             console.log( data )
-
-            let cardsList = data.data;
-            for ( const card of cardsList ) {
-                console.log( card )
-                let div = document.createElement( 'div' );
-
-                let age = ( new Date() ).getFullYear() - card.Year;
-
-                div.innerHTML = `\
-                <div class="image-crop">
-                <img src=${ card.Image } alt='${ card.Make + ' ' + card.Model }' >
-                </div>
-                    <h1>
-                        <span style="color:var(--text-brand);">${ card.Make }<\span>
-                        <span style="color:var(--text-model);">${ card.Model }<\span>
-                    </h1>
-                    <h1>
-                        <span style="color:var(--text-price); font-family:'Manuale',serif;">${ card.Price }$</span>
-                        <span style="color:var(--text-years); float:right; ">${ age } years old</span>
-                    </h1>
-                        `;
-                let itemGrid = document.getElementById( 'item_grid' );
-                div.className = 'card';
-                itemGrid.appendChild( div );
-
-
-            }
+            renderList( data.data );
         }
         );
     </script>
 
     <script>
     </script>
-    <div class="footer">
+    <footer>
         <h3>
             <img src="https://cdn.discordapp.com/emojis/621517681379770383.gif?v=1" style="max-height:32px">
             To buy any of the above listings or get more informationabout them please call
@@ -66,15 +39,23 @@
                 315-077-2231
             </a>
             <img src="https://cdn.discordapp.com/emojis/464275646596775936.gif?v=1" style="max-height:32px">
+            .
         </h3>
         <img src="https://cdn.discordapp.com/emojis/726345238406234232.gif?v=1" alt=":birbparty:">
-    </div>
+    </footer>
     <nav class="navbar">
-        <button>
-            <span class="material-icons">
-                import_export
-            </span>
-        </button>
+        <div>
+            <button>
+                <span class="material-icons" style="height:100%;">
+                    arrow_drop_up
+                </span>
+                <span>asdasfhgjdsa</span>
+            </button>
+            <button onclick="priceClicked()">
+                <span>Price</span>
+                <span id="priceIcon" class="material-icons" style="height:100%;">import_export</span>
+            </button>
+        </div>
     </nav>
 </body>
 

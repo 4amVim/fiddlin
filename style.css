@@ -15,9 +15,6 @@
   --misc-dark: #3c6966;
 }
 
-* {
-}
-
 html,
 body {
   background-color: var(--background);
@@ -92,37 +89,37 @@ span {
 }
 
 .navbar {
-  box-shadow: flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  padding: 0px 16px;
 
-  flex-direction: row;
-
-  height: clamp(24px, 5vw, 48px);
+  height: 48px;
   bottom: 0px;
   width: 100%;
   position: fixed;
   background-color: var(--navbar);
 }
 
-.navbar > * {
-  margin: 5px;
-  height: clamp(24px, 5vw, 48px);
+button {
+  display: inline-flex;
+  font-size: 48px;
+  align-items: center;
 }
 
-.footer {
+footer {
   display: grid;
   place-items: center;
 }
 
-.footer > h3 {
+footer > h3 {
   color: var(--misc-light);
   text-align: center;
   margin-bottom: 0;
 }
 
-.footer > img {
+footer > img {
   max-width: 48px;
-  margin-bottom: clamp(18px, 5vw, 42px);
+  margin-bottom: 43px;
   padding: 5px;
 }
