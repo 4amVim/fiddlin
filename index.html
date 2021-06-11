@@ -7,7 +7,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Belgrano&family=Manuale&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" /> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
 
@@ -18,7 +19,6 @@
 </head>
 
 <body>
-    <nav class="navbar"></nav>
     <div id="item_grid">
     </div>
     <script>
@@ -42,7 +42,7 @@
                         <span style="color:var(--text-model);">${ card.Model }<\span>
                     </h1>
                     <h1>
-                        <span style="color:var(--text-price); float:left">${ card.Price }$</span>
+                        <span style="color:var(--text-price); font-family:'Manuale',serif;">${ card.Price }$</span>
                         <span style="color:var(--text-years); float:right; ">${ age } years old</span>
                     </h1>
                         `;
@@ -58,10 +58,19 @@
 
     <script>
     </script>
+    <div style="  display: grid;place-items: center;">
+        <h3 style="color:var(--misc-light); text-align:center;">To buy any of the above listings or get more information
+            about them please
+            please call.
+            <a href="tel:315-077-2231" style="color:#2D9F9F">
+                315-077-2231
+            </a>
 
-
-
-    <nav class="navbar" style="position: relative; margin:0px"></nav>
+        </h3>
+        <img src="https://cdn.discordapp.com/emojis/726345238406234232.gif?v=1"
+            style="max-width: 32px; margin-bottom: 41px; padding:5px;">
+    </div>
+    <nav class="navbar"></nav>
 </body>
 
 </html>

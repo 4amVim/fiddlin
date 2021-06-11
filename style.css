@@ -15,12 +15,16 @@
   --misc-dark: #3c6966;
 }
 
+* {
+}
+
 html,
 body {
   background-color: var(--background);
   height: 100%;
   width: 100%;
   margin: 0;
+  font-family: "Belgrano", serif;
 }
 
 .main_grid {
@@ -54,8 +58,9 @@ body {
   );
 }
 
-h1 {
-  font-size: clamp(1rem, 100vw, 2rem);
+h1,
+span {
+  font-size: clamp(16px, 5vw, 24px);
   margin: 0px;
 }
 
