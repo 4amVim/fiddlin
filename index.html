@@ -18,8 +18,7 @@
 </head>
 
 <body>
-    <nav class="navbar">
-    </nav>
+    <nav class="navbar"></nav>
     <div class="main">
         <div id="item_grid">
         </div>
@@ -37,14 +36,14 @@
                 let age = ( new Date() ).getFullYear() - card.Year;
 
                 div.innerHTML = `\
-                <img src=${ card.Image } >\
+                <img src=${ card.Image } alt='${ card.Make + ' ' + card.Model }' >\
                     <h1 style="grid-row:2;>
-                        <span style="color:var(--text-brand)">${ card.Make }<\span>
-                        <span style="color:var(--text-model)">${ card.Model }<\span>
+                        <span style="color:var(--text-brand);">${ card.Make }<\span>
+                        <span style="color:var(--text-model);">${ card.Model }<\span>
                     </h1>
-                    <h1 style="grid-row:3;">
+                    <h1 style="grid-row:3; align-self: start;">
                         <span style="color:var(--text-price);">${ card.Price }$</span>
-                        <span style="color:var(--text-years);">${ age }</span>
+                        <span style="color:var(--text-years); float:right; ">${ age } years</span>
                     </h1>
                         `;
                 let itemGrid = document.getElementById( 'item_grid' );
@@ -62,6 +61,7 @@
 
 
 
+    <nav class="navbar" style="position: relative; margin:0px"></nav>
 </body>
 
 </html>
