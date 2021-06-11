@@ -11,10 +11,8 @@
   --text-years: #5d99ac;
   --text-model: #c0eded;
 
-  --misc-light: #c0eded;
+  --misc-light: #c0eded; /*#c0eded;*/
   --misc-dark: #3c6966;
-
-  /* Highlight Color */
 }
 
 html,
@@ -25,17 +23,12 @@ body {
   margin: 0;
 }
 
-.main {
-  margin: 8px;
-}
-
 .main_grid {
   /* grid-template-rows: auto 40vh 9vh; */
   /* grid-template-columns: auto 10vw 10vw; */
   /* grid-auto-flow: row dense; */
   display: grid;
   place-items: center;
-  /* resize: both; */
   min-width: 100%;
   min-height: 100%;
 }
@@ -44,15 +37,15 @@ body {
   /* grid-column: 1/-1; */
   /* grid-row: 1/-2; */
   /* align-items: center; */
-  place-items: center;
-  align-self: center;
-  /* column-gap: -5px; */
-  min-width: 100%;
-  min-height: 100%;
-
-  justify-content: space-around;
+  /* min-width: 100%; */
+  /* min-height: 100%; */
 
   /* macro details */
+  box-sizing: outline-box;
+  place-items: center;
+  align-self: center;
+  padding: 4px;
+  justify-content: space-around;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   grid-template-rows: repeat(
@@ -61,62 +54,42 @@ body {
   );
 }
 
-h1,
-p {
-  color: #cff2e8;
+h1 {
   font-size: clamp(1rem, 100vw, 2rem);
-  margin: 0;
-  align-self: end;
-  /* align-self: ; */
+  margin: 0px;
 }
 
+.image-crop {
+  flex-grow: 1;
+  display: grid;
+  place-items: center;
+}
 img {
-  box-sizing: border-box;
-  grid-column: 1/-1;
-  grid-row: 1/2;
-  margin-top: 16px;
-  align-self: center;
-  box-sizing: border-box;
   width: 100%;
-  object-fit: contain;
-  border: 2.4px solid var(--misc-light);
-  border-radius: 16px;
+  object-fit: cover;
+  border-radius: 24px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border: 2.4px solid var(--misc-dark);
 }
 
 .card {
-  display: grid;
-  /* box-sizing: outline-box; */
-  border-radius: 24px;
-  align-items: center;
-  background-color: var(--card-bg);
   padding: 16px;
-  padding-top: 8px;
-
-  margin: 0px;
-  grid-template-columns: auto;
-  grid-template-rows: 14fr 3fr 3fr 0px;
-
-  /* height: calc(100%-32px); */
-  /* margin: 16px; */
-  /* grid-column: 1/2; */
-  /* grid-row: 1; */
-  /* min-height: auto;
-  min-width: 150px;
-  max-width: 320px; */
+  margin: 16px;
+  /* Following are required to make all cards the same size */
   width: 88%;
   height: 88%;
-  align-content: space-around;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg);
+  border: 1.6px solid var(--misc-dark);
 }
 
 .navbar {
-  width: 100%;
   height: clamp(24px, 5vw, 48px);
-  padding: 2px 0 0 12px;
-  position: fixed;
   bottom: 0px;
-  /* bottom: -1px; */
+  width: 100%;
+  position: fixed;
   background-color: var(--navbar);
-
-  /* grid-column: 1/-1; */
-  /* grid-row: -2; */
 }
