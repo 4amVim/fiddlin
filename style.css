@@ -69,7 +69,7 @@ span {
   display: grid;
   place-items: center;
 }
-img {
+.image-crop > img {
   width: 100%;
   object-fit: cover;
   border-radius: 24px;
@@ -108,4 +108,21 @@ img {
 .navbar > * {
   margin: 5px;
   height: clamp(24px, 5vw, 48px);
+}
+
+.footer {
+  display: grid;
+  place-items: center;
+}
+
+.footer > h3 {
+  color: var(--misc-light);
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.footer > img {
+  max-width: 48px;
+  margin-bottom: clamp(18px, 5vw, 42px);
+  padding: 5px;
 }
