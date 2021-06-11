@@ -92,9 +92,20 @@ img {
 }
 
 .navbar {
+  box-shadow: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: row;
+
   height: clamp(24px, 5vw, 48px);
   bottom: 0px;
   width: 100%;
   position: fixed;
   background-color: var(--navbar);
+}
+
+.navbar > * {
+  margin: 5px;
+  height: clamp(24px, 5vw, 48px);
 }
