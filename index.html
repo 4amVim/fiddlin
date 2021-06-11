@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Insurance Browser</title>
+    <title>Used Car Browser</title>
     <link href="style.css" rel="stylesheet" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,7 +20,7 @@
 <body>
     <nav class="navbar">
     </nav>
-    <div class="main_grid">
+    <div class="main">
     <div id="item_grid">
     </div>
     </div>
@@ -37,16 +37,16 @@
                 let age = ( new Date() ).getFullYear() - card.Year;
 
                 div.innerHTML = `\
-                <img src=${ card.Image }>
+                <img src=${ card.Image } >
                     <h1>\
                         <span style="color:var(--text-brand)">${ card.Make }</span>\
                         <span style="color:var(--text-model)">${ card.Model }</span>\
                     </h1>\
-                    <h1 style="color:var(--text-price)">${ age }</h1>\
-                    <h1 style="color:var(--text-years)">${ card.Price }$</h1>\
+                    <h1 style="color:var(--text-years)">${ age }</h1>\
+                    <h1 style="color:var(--text-price)">${ card.Price }$</h1>\
                         `;
                 let itemGrid = document.getElementById( 'item_grid' );
-                div.className='card';
+                div.className = 'card';
                 itemGrid.appendChild( div );
 
 
