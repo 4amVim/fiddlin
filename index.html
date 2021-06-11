@@ -18,6 +18,12 @@
 </head>
 
 <body>
+    <nav class="navbar">
+    </nav>
+    <div class="main_grid">
+    <div id="item_grid">
+    </div>
+    </div>
     <script>
         _getData().then( data => {
 
@@ -31,7 +37,7 @@
                 let age = ( new Date() ).getFullYear() - card.Year;
 
                 div.innerHTML = `\
-                <img src=${card.Image}>
+                <img src=${ card.Image }>
                     <h1>\
                         <span style="color:var(--text-brand)">${ card.Make }</span>\
                         <span style="color:var(--text-model)">${ card.Model }</span>\
@@ -39,8 +45,9 @@
                     <h1 style="color:var(--text-price)">${ age }</h1>\
                     <h1 style="color:var(--text-years)">${ card.Price }$</h1>\
                         `;
-                let itemGrid=document.getElementById('item_grid');
-                itemGrid.appendChild(div);
+                let itemGrid = document.getElementById( 'item_grid' );
+                div.className='card';
+                itemGrid.appendChild( div );
 
 
             }
@@ -51,13 +58,7 @@
     <script>
     </script>
 
-    <div class="main_grid">
-        <div id="item_grid">
-        <div class="navbar">
-        </div>
 
-    </div>
-    </div>
 
 </body>
 
