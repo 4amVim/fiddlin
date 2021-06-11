@@ -14,17 +14,20 @@
 
     <!-- REMOVE THIS -->
     <link rel="shortcut icon" href="https://cdn.discordapp.com/emojis/505944972285968394.gif?v=1">
-    <script>let Data; //Caches the fetched object</script>
+    <script>let Data;//Caches the fetched object
+        let Builds = new Set();//Choices
+        let Brands = new Set();//Choices
+        let SortState;//Keeps track of current sorting
+        let MaskState = new Set();//Keeps track of current filter
+    </script>
     <script src="main.js"></script>
 </head>
 
 <body>
-    <div id="item_grid">
-    </div>
+    <div id="item_grid"></div>
     <script>
         _getData().then( data => {
-            console.log( data )
-            renderList( data.data );
+            renderList( data.data ); //First render of the list
         }
         );
     </script>
@@ -44,18 +47,19 @@
         <img src="https://cdn.discordapp.com/emojis/726345238406234232.gif?v=1" alt=":birbparty:">
     </footer>
     <nav class="navbar">
-        <div>
-            <button>
-                <span class="material-icons" style="height:100%;">
-                    arrow_drop_up
-                </span>
-                <span>asdasfhgjdsa</span>
-            </button>
-            <button onclick="priceClicked()">
-                <span>Price</span>
-                <span id="priceIcon" class="material-icons" style="height:100%;">import_export</span>
-            </button>
-        </div>
+        <button onclick="brandSelect()" class="dropup brand">Brands</button>
+        <button onclick="buildSelect()" class="dropup build">Builds</button>
+
+        <div id="tags"></div>
+
+        <button onclick="yearClicked()" id="age" class="age">
+            Age
+            <span id="yearIcon" class="material-icons">import_export</span>
+        </button>
+        <button onclick="priceClicked()" id="price" class="price">
+            <span>Price</span>
+            <span id="priceIcon" class="material-icons">import_export</span>
+        </button>
     </nav>
 </body>
 

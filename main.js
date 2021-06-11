@@ -10,8 +10,43 @@ async function _getData () {
 	return Data;
 }
 
+function yearClicked () {
+	const yearIcon = document.getElementById( 'yearIcon' );
+	document.getElementById( 'priceIcon' ).innerHTML = "import_export";
+	let sort; //Shows us the utility of a quadratic boolean
+	switch ( yearIcon.innerHTML ) {
+		case "import_export":
+			yearIcon.innerHTML = "trending_up";
+			sort = true;
+			break;
+		case "trending_up":
+			yearIcon.innerHTML = "trending_down";
+			sort = false;
+			break;
+		case "trending_down":
+			yearIcon.innerHTML = "import_export";
+			sort = null;
+			break;
+		default:
+			console.error( "How did I come here, what am I doing?!" )
+			break;
+	}
+
+	const db = Data.data.slice();
+
+	if ( sort == null ) {
+		renderList( db )
+		document.getElementById( 'age' ).className = "age";
+	} else {
+		!sort ? renderList( db.sort( ( a, b ) => a.Year - b.Year ) )
+			: renderList( db.sort( ( a, b ) => b.Year - a.Year ) );
+		document.getElementById( 'age' ).className = "ageSorted";
+	}
+
+}
 function priceClicked () {
-	let priceIcon = document.getElementById( 'priceIcon' );
+	const priceIcon = document.getElementById( 'priceIcon' );
+	document.getElementById( 'yearIcon' ).innerHTML = "import_export";
 	let sort; //Shows us the utility of a quadratic boolean
 	switch ( priceIcon.innerHTML ) {
 		case "import_export":
@@ -32,23 +67,35 @@ function priceClicked () {
 	}
 
 	const db = Data.data.slice();
-	sort == null ? renderList( db ) :
+	if ( sort == null ) {
+		renderList( db )
+		document.getElementById( 'price' ).className = "price";
+	} else {
 		sort ? renderList( db.sort( ( a, b ) => a.Price - b.Price ) )
 			: renderList( db.sort( ( a, b ) => b.Price - a.Price ) );
-
+		document.getElementById( 'price' ).className = "priceSorted";
+	}
 }
 
 function renderList ( cardsList ) {
+	if ( cardsList === undefined ) {
+		cardsList = SortState
+	} else {
+		SortState = cardsList;//So that we always have a list with the latest Sort
+	}
 	console.log( cardsList );
 	const itemGrid = document.getElementById( 'item_grid' );
 	itemGrid.innerHTML = '';
 	for ( let i = 0; i < cardsList.length; i++ ) {
-		const card = cardsList[i];
-		console.log( card )
-		let div = document.createElement( 'div' );
-		let age = ( new Date() ).getFullYear() - card.Year;
 
-		div.innerHTML = `\
+		const card = cardsList[i];
+		if ( !( MaskState.has( card.Make ) || MaskState.has( card.Model ) ) ) {
+			console.log( card )
+			let div = document.createElement( 'div' );
+			let age = ( new Date() ).getFullYear() - card.Year;
+			Builds.add( card.Model );
+			Brands.add( card.Make );
+			div.innerHTML = `\
                 <div class="image-crop">
                 <img src=${ card.Image } alt='${ card.Make + ' ' + card.Model }' >
                 </div>
@@ -61,10 +108,17 @@ function renderList ( cardsList ) {
                         <span style="color:var(--text-years); float:right; ">${ age } years old</span>
                     </h1>
                         `;
-		div.className = 'card';
-		itemGrid.appendChild( div );
-		itemGrid.append
+			div.className = 'card';
+			itemGrid.appendChild( div );
+			itemGrid.append
+		}
 
 	}
 	console.log( priceIcon.innerHTML );
+}
+
+function brandSelect () {
+	MaskState.add( "Aston Martin" );
+	renderList();
+
 }
