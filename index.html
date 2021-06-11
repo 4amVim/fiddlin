@@ -21,8 +21,8 @@
     <nav class="navbar">
     </nav>
     <div class="main">
-    <div id="item_grid">
-    </div>
+        <div id="item_grid">
+        </div>
     </div>
     <script>
         _getData().then( data => {
@@ -38,10 +38,8 @@
 
                 div.innerHTML = `\
                 <img src=${ card.Image } >
-                    <h1>\
-                        <span style="color:var(--text-brand)">${ card.Make }</span>\
-                        <span style="color:var(--text-model)">${ card.Model }</span>\
-                    </h1>\
+                    <h1 style="color:var(--text-brand)">${ card.Make }</h1>
+                    <h1 style="color:var(--text-model)">${ card.Model }</h1>
                     <h1 style="color:var(--text-years)">${ age }</h1>\
                     <h1 style="color:var(--text-price)">${ card.Price }$</h1>\
                         `;
