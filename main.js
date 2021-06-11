@@ -33,7 +33,9 @@ function priceClicked () {
 
 	const db = Data.data.slice();
 	sort == null ? renderList( db ) :
-		renderList( db.sort( ( a, b ) => ( ( ( a.Price <= b.Price ) && sort ) ? -1 : 1 ) ) );
+		sort ? renderList( db.sort( ( a, b ) => a.Price - b.Price ) )
+			: renderList( db.sort( ( a, b ) => b.Price - a.Price ) );
+
 }
 
 function renderList ( cardsList ) {
