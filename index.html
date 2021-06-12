@@ -42,7 +42,6 @@
             <p> </p>
         </div>
     </div>
-
     <div id="item_grid"></div>
     <script>
         _getData().then( data => {
@@ -53,8 +52,6 @@
 
     <script>
     </script>
-    <ul class="slide-help1" id='popup'>
-    </ul>
     <footer>
         <h3>
             <img src="https://cdn.discordapp.com/emojis/621517681379770383.gif?v=1" style="max-height:32px">
@@ -69,8 +66,9 @@
         <p style="color:var(--misc-dark)">Rights reserved by birbcorp</p>
     </footer>
     <nav id="navbar">
-        <button onclick="open('brand')" id="das" class="menuButton brand">Brands</button>
-        <button onclick="open('model')" class="menuButton build">Builds</button>
+        <button onclick="dropup('brand')" id="das" class="menuButton brand">Brands</button>
+
+        <button onclick="dropup('model')" class="menuButton build">Builds</button>
 
         <div id="tags"></div>
 
@@ -83,6 +81,37 @@
             <span id="priceIcon" class="material-icons">import_export</span>
         </button>
     </nav>
+    <ul class='popup' id="popup">
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+    </ul>
+    <ul id='brand-popup' class="brand">
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+    </ul>
+    <ul id='model-popup' class="model">
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+        <li>asd</li>
+    </ul>
 
 </body>
 

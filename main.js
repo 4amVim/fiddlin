@@ -85,31 +85,26 @@ function renderList ( cardsList ) {
 	}
 }
 
-function open ( field ) {
-	if ( isBrandsOpen == null ) {
-		slideUp( field );
-		isBrandsOpen = field == 'brand';
-		if ( field == 'brand' ) {
-			if ( isBrandsOpen ) {
-				slideDown( 'brand' );
-				isBrandsOpen = null;
-			} else {
-				slideDown( 'build' );
-				slideUp( 'brand' );
-				isBrandsOpen = true;
-			}
-		} else {
-			if ( !isBrandsOpen ) {
-				slideDown( 'build' );
-				isBrandsOpen = null;
-			} else {
-				slideDown( 'brand' );
-				slideUp( 'build' );
-				isBrandsOpen = false;
-			}
-		}
-		renderList();
+function dropup ( sortButton ) {
+	function slide ( ul, up ) {
+		window.requestAnimationFrame( function () {
+			document.getElementById( `${ ul }-popup` ).style.transform = up ? 'translateY(calc(4px - 10em))' : 'translateY(calc(10em - 4px))';
+		} )
 	}
+	if ( isBrandsOpen == null ) {
+		slide( sortButton, true );
+	} else {
+		let foo = isBrandsOpen ? 'brand' : 'model';
+		if ( sortButton == foo ) {
+			slide( sortButton, false );
+			isBrandsOpen=null;
+			return;
+		} else {
+			slide( foo, false );
+			slide( sortButton, true );
+		}
+	}
+	isBrandsOpen = sortButton == 'brand';
 }
 
 function slideDown ( page ) {
