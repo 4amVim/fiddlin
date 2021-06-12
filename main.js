@@ -10,75 +10,46 @@ async function _getData () {
 	return Data;
 }
 
-function yearClicked () {
-	const yearIcon = document.getElementById( 'yearIcon' );
-	document.getElementById( 'priceIcon' ).innerHTML = "import_export";
+// Pass this 'year' or 'price' and it'll increment a sort in that direction
+function sort ( field ) {
+	const icon = document.getElementById( `${ field }Icon` );
 	let sort; //Shows us the utility of a quadratic boolean
-	switch ( yearIcon.innerHTML ) {
+	switch ( icon.innerHTML ) {
 		case "import_export":
-			yearIcon.innerHTML = "trending_up";
+			icon.innerHTML = "trending_up";
 			sort = true;
 			break;
 		case "trending_up":
-			yearIcon.innerHTML = "trending_down";
+			icon.innerHTML = "trending_down";
 			sort = false;
 			break;
 		case "trending_down":
-			yearIcon.innerHTML = "import_export";
+			icon.innerHTML = "import_export";
 			sort = null;
 			break;
 		default:
 			console.error( "How did I come here, what am I doing?!" )
 			break;
 	}
-
 	const db = Data.data.slice();
-
+	const foo = ( field == 'year' ) ? 'year' : 'price';
 	if ( sort == null ) {
-		renderList( db )
-		document.getElementById( 'age' ).className = "age";
+		renderList( db );
+		document.getElementById( foo ).className = foo;
 	} else {
-		!sort ? renderList( db.sort( ( a, b ) => a.Year - b.Year ) )
-			: renderList( db.sort( ( a, b ) => b.Year - a.Year ) );
-		document.getElementById( 'age' ).className = "ageSorted";
-		document.getElementById( 'price' ).className = "price";
-	}
-
-}
-function priceClicked () {
-	const priceIcon = document.getElementById( 'priceIcon' );
-	document.getElementById( 'yearIcon' ).innerHTML = "import_export";
-	let sort; //Shows us the utility of a quadratic boolean
-	switch ( priceIcon.innerHTML ) {
-		case "import_export":
-			priceIcon.innerHTML = "trending_up";
-			sort = true;
-			break;
-		case "trending_up":
-			priceIcon.innerHTML = "trending_down";
-			sort = false;
-			break;
-		case "trending_down":
-			priceIcon.innerHTML = "import_export";
-			sort = null;
-			break;
-		default:
-			console.error( "How did I come here, what am I doing?!" )
-			break;
-	}
-
-	const db = Data.data.slice();
-	if ( sort == null ) {
-		renderList( db )
-		document.getElementById( 'price' ).className = "price";
-	} else {
-		sort ? renderList( db.sort( ( a, b ) => a.Price - b.Price ) )
-			: renderList( db.sort( ( a, b ) => b.Price - a.Price ) );
-		document.getElementById( 'price' ).className = "priceSorted";
-		document.getElementById( 'age' ).className = "age";
+		if ( field == 'year' ) {
+			sort ? renderList( db.sort( ( a, b ) => a.Year - b.Year ) )
+				: renderList( db.sort( ( a, b ) => b.Year - a.Year ) )
+		} else {
+			sort ? renderList( db.sort( ( a, b ) => a.Price - b.Price ) )
+				: renderList( db.sort( ( a, b ) => b.Price - a.Price ) );
+		}
+		document.getElementById( foo ).className = `${ foo }Sorted`
+		document.getElementById( field ).className = field;
 	}
 }
 
+// Our primary paint, calculates and fills the item grid
 function renderList ( cardsList ) {
 	if ( cardsList === undefined ) {
 		cardsList = SortState
@@ -95,12 +66,10 @@ function renderList ( cardsList ) {
 			console.log( card )
 			let div = document.createElement( 'div' );
 			let age = ( new Date() ).getFullYear() - card.Year;
-			Builds.add( card.Model );
-			Brands.add( card.Make );
+			ModelList.add( card.Model );
+			BrandList.add( card.Make );
 			div.innerHTML = `\
-                <div class="image-crop">
-                <img src=${ card.Image } alt='${ card.Make + ' ' + card.Model }' >
-                </div>
+                    <img src=${ card.Image } alt='${ card.Make + ' ' + card.Model }' >
                     <h1>
                         <span style="color:var(--text-brand);">${ card.Make }<\span>
                         <span style="color:var(--text-model);">${ card.Model }<\span>
@@ -112,41 +81,35 @@ function renderList ( cardsList ) {
                         `;
 			div.className = 'card';
 			itemGrid.appendChild( div );
-			// itemGrid.append
 		}
-
 	}
-	console.log( priceIcon.innerHTML );
 }
 
-function brandSelect () {
+function open ( field ) {
 	if ( isBrandsOpen == null ) {
-		slideUp( 'brand' );
-		isBrandsOpen = true;
-	} else if ( isBrandsOpen ) {
-		slideDown( 'brand' );
-		isBrandsOpen = null;
-	} else {
-		slideDown( 'build' );
-		slideUp( 'brand' );
-		isBrandsOpen = true;
+		slideUp( field );
+		isBrandsOpen = field == 'brand';
+		if ( field == 'brand' ) {
+			if ( isBrandsOpen ) {
+				slideDown( 'brand' );
+				isBrandsOpen = null;
+			} else {
+				slideDown( 'build' );
+				slideUp( 'brand' );
+				isBrandsOpen = true;
+			}
+		} else {
+			if ( !isBrandsOpen ) {
+				slideDown( 'build' );
+				isBrandsOpen = null;
+			} else {
+				slideDown( 'brand' );
+				slideUp( 'build' );
+				isBrandsOpen = false;
+			}
+		}
+		renderList();
 	}
-	renderList();
-}
-function buildSelect () {
-	if ( isBrandsOpen == null ) {
-		slideUp( 'build' );
-		isBrandsOpen = false;
-	} else if ( isBrandsOpen ) {
-		slideDown( 'brand' );
-		slideUp( 'build' );
-		isBrandsOpen = false;
-	} else {
-		slideDown( 'build' );
-		isBrandsOpen = null;
-	}
-	renderList();
-
 }
 
 function slideDown ( page ) {
@@ -161,7 +124,7 @@ function slideDown ( page ) {
 function slideUp ( page ) {
 	let popup = document.getElementById( "popup" );
 	popup.innerHTML = '';
-	const list = page === 'build' ? Builds : Brands;
+	const list = page === 'model' ? ModelList : BrandList;
 	for ( let item of list ) {
 		const label = item;
 		const status = MaskState.has( label ) ?
