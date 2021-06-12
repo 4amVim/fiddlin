@@ -132,3 +132,17 @@ function buildSelect () {
 	renderList();
 
 }
+
+window.addEventListener( "scroll", function () {
+	var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+	if ( st > lastScrollTop ) {
+		document.getElementById( "navbar" ).style.bottom = "0px";
+	} else {
+		document.getElementById( "navbar" ).style.bottom = "-10%";
+	}
+	lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+	if ( ( window.innerHeight + window.scrollY * 1.1 ) >= document.body.offsetHeight ) {
+		// document.getElementById( "bottommenu" ).offsetHeight = "-100px";
+		document.getElementById( "navbar" ).style.bottom = "-10%";
+	}
+}, false );

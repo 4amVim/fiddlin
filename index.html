@@ -19,6 +19,7 @@
         let Brands = new Set();//Choices
         let SortState;//Keeps track of current sorting
         let MaskState = new Set();//Keeps track of current filter
+        let lastScrollTop = 0; //Keeps track of scroll to auto-hide navbar
     </script>
     <script src="main.js"></script>
 </head>
@@ -47,7 +48,7 @@
     <footer>
         <h3>
             <img src="https://cdn.discordapp.com/emojis/621517681379770383.gif?v=1" style="max-height:32px">
-            To buy any of the above listings or get more informationabout them please call
+            To buy any of the above listings or get more information about them please call
             <a href="tel:315-077-2231" style="color:#2D9F9F">
                 315-077-2231
             </a>
@@ -55,8 +56,9 @@
             .
         </h3>
         <img src="https://cdn.discordapp.com/emojis/726345238406234232.gif?v=1" alt=":birbparty:">
+        <p style="color:var(--misc-dark)">Rights reserved by birbcorp</p>
     </footer>
-    <nav class="navbar">
+    <nav id="navbar">
         <button onclick="brandSelect()" id="das" class="menuButton brand">Brands</button>
         <button onclick="buildSelect()" class="menuButton build">Builds</button>
 
