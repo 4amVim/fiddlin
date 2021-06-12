@@ -121,6 +121,9 @@ function renderList ( cardsList ) {
 
 function brandSelect () {
 	MaskState.add( "Aston Martin" );
+	console.log( 'ok' )
+	document.getElementById( 'buildDropdown' ).style.opacity = 1;
+	console.log( 'ok' )
 	renderList();
 
 }
