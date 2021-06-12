@@ -1,50 +1,43 @@
 :root {
-  --background: #172a3a;
-  --card-bg: #145967;
+  --background: #001629;
+  --card-bg: #0c3740;
 
-  --navbar: #9ecad1;
+  --navbar: #728C17;
   --on-navbar: #38636b;
   --navbar-slider: #fdedb0;
 
-  --text-brand: #58d1b4;
+  --text-brand: #09bc8a;
   --text-price: #fde586;
   --text-years: #5d99ac;
   --text-model: #c0eded;
 
-  --misc-light: #c0eded; /*#c0eded;*/
-  --misc-dark: #3c6966;
+  --misc-light: #90e0e0; /*#c0eded;*/
+  --misc-light2: #89ce78;
+  --misc-dark: #4a827d; /*3c6966;*/
 }
 
 html,
-body {
+html > * {
+  transition: 0.6s;
+  transition-timing-function: ease-in;
   background-color: var(--background);
-  height: 100%;
+  font-family: "Belgrano", serif;
   width: 100%;
   margin: 0;
-  font-family: "Belgrano", serif;
-  transition-timing-function: ease-in;
-  transition: 0.6s;
 }
 
 #item_grid {
-  /* grid-column: 1/-1; */
-  /* grid-row: 1/-2; */
-  /* align-items: center; */
-  /* min-width: 100%; */
-  /* min-height: 100%; */
-
-  /* macro details */
   box-sizing: outline-box;
+  display: grid;
   place-items: center;
   align-self: center;
-  padding: 4px;
   justify-content: space-around;
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   grid-template-rows: repeat(
     auto-fill,
     minmax(clamp(200px, 250px, auto), 400px)
   );
+  padding: 4px;
 }
 
 h1,
@@ -64,10 +57,12 @@ span {
   border-radius: 24px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border: 2.4px solid var(--misc-dark);
+  border: 2.4px solid var(--misc-light);
+  box-shadow: 0 16px 16vh 8px var(--misc-dark);
 }
 
 .card {
+  overflow: hidden;
   padding: 16px;
   margin: 16px;
   /* Following are required to make all cards the same size */
@@ -77,21 +72,25 @@ span {
   display: flex;
   flex-direction: column;
   background-color: var(--card-bg);
-  border: 1.6px solid var(--misc-dark);
+  border: 0.8px solid var(--misc-light2);
+  box-shadow: inset 0 0 8px var(--misc-light2);
 }
 
 .navbar {
   display: flex;
   align-items: center;
-  padding: 2px 4px 0 4px;
+  padding: 4px 4px;
 
   height: 48px;
-  bottom: -2px;
-  width: 100%;
+  bottom: 0;
   position: fixed;
   background-color: var(--navbar);
   min-width: 100%;
   overflow-x: auto;
+}
+
+.navbar > * {
+  height: 100%;
 }
 
 button {
@@ -102,14 +101,8 @@ button {
   transition: 0.6s;
   font-size: 24px;
   border-radius: 16px;
-  padding: 0 2px 4px 8px;
+  /* padding: 0 2px 4px 8px; */
   margin-right: 4px;
-}
-
-button:hover {
-  padding: 4px;
-  margin-right: 8px;
-  font-size: 24px;
 }
 
 .age {
@@ -150,9 +143,8 @@ button:hover {
 
 .dropup:hover {
   color: var(--on-navbar);
-  padding: 4px 16px 1px 4px;
-  margin-top: -2px;
-  padding-right: 16px;
+  padding: 4px 18px 2px 4px;
+  /* margin-top: -2px; */
 }
 .brand {
   color: var(--text-brand);
