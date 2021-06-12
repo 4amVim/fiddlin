@@ -41,6 +41,7 @@ function yearClicked () {
 		!sort ? renderList( db.sort( ( a, b ) => a.Year - b.Year ) )
 			: renderList( db.sort( ( a, b ) => b.Year - a.Year ) );
 		document.getElementById( 'age' ).className = "ageSorted";
+		document.getElementById( 'price' ).className = "price";
 	}
 
 }
@@ -74,6 +75,7 @@ function priceClicked () {
 		sort ? renderList( db.sort( ( a, b ) => a.Price - b.Price ) )
 			: renderList( db.sort( ( a, b ) => b.Price - a.Price ) );
 		document.getElementById( 'price' ).className = "priceSorted";
+		document.getElementById( 'age' ).className = "age";
 	}
 }
 
@@ -118,6 +120,11 @@ function renderList ( cardsList ) {
 }
 
 function brandSelect () {
+	MaskState.add( "Aston Martin" );
+	renderList();
+
+}
+function buildSelect () {
 	MaskState.add( "Aston Martin" );
 	renderList();
 
