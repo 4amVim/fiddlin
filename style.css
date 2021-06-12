@@ -33,7 +33,7 @@
 
   --text-brand-light: #23ebb2;
   --text-brand: #09bc8a;
-  --text-price: #fde586;
+  --text-price: #6C0AFF;
   --text-years: #5d99ac;
   --text-model: #c0eded;
 
@@ -58,14 +58,13 @@ html > * {
 #item_grid {
   box-sizing: outline-box;
   display: grid;
-  place-items:center stretch;
+  place-items:center;
   align-self: center;
   justify-content: space-around;
-  grid-template-columns: repeat(auto-fit,minmax(240px,auto));
-  /* grid-template-rows: repeat(
-    auto-fill,
-    minmax(clamp(200px, 250px, auto), 400px)
-  ); */
+  grid-template-columns: repeat(auto-fit,minmax(160px,320px));
+  grid-template-rows: repeat(
+    auto-fill,minmax(clamp(40px,10%vw,240px),10%)
+  );
   padding: 4px;
 }
 
@@ -74,14 +73,13 @@ html > * {
   box-sizing: border-box;
   grid-template-rows: 12fr 2fr 2fr;
   grid-template-columns: 100%;
-  place-items: center;
 
-  /* padding: 16px;
+  /* padding: 1rem; */
   margin: 16px;
   /* Following are required to make all cards the same size */
-  width: clamp(180px,90%,480px,);
-  margin:0.5rem 1rem;
-  height: clamp(120px,20%,auto);
+  width: 90%;
+  /* margin:0.5rem; */
+  height: 90%;
   border-radius: 24px;
   background-color: var(--card-bg);
   border: 24px solid var(--highlight);
@@ -91,19 +89,20 @@ html > * {
 
 .card >*
 {
-  background-color: ;
+  /* background-color: ; */
 }
 
 .card > img {
   object-fit: fill;
   overflow: hidden;
   min-width: 100%;
-  border-radius: 18px;
+  border-radius: 17px;
   min-height: 100%;
   max-width: 100%;
   max-height: 100%;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  overflow: hidden;
 }
 
 .card-solo {
@@ -363,7 +362,6 @@ footer > img {
   cursor: pointer;
 }
 
-}
 
 .card-solo {
   padding: 16px;
