@@ -167,17 +167,18 @@ footer {
   position: relative;
   display: grid;
   place-items: center;
-  top: 5vh;
+  top: -5.2vh;
 }
 
 footer > h3 {
   color: var(--misc-light);
   text-align: center;
   margin-bottom: 0;
+  margin-top: 48px;
 }
 
 footer > img {
-  max-width: 48px;
+  max-width: 35px;
 }
 
 /* Dropup menus and animations */
@@ -211,12 +212,15 @@ footer > img {
 }
 
 .tagSelect > * {
+  transition: all 0.6s;
+  transition-timing-function: ease-in;
   color: inherit;
   border-radius: 0;
   padding: 4px 8px;
   background-color: var(--on-navbar);
   margin: 0;
   /* width: 100%; */
+  cursor: default;
 
   z-index: 3;
 }
@@ -231,6 +235,7 @@ footer > img {
   font-size: 32px;
   align-self: stretch;
   margin-left: auto;
+  transition: all 1s;
 }
 
 #tags {

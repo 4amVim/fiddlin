@@ -167,7 +167,7 @@ function slideUp ( page ) {
 		const status = MaskState.has( label ) ?
 			'check_box_outline_blank' : 'check_box';
 		let li = document.createElement( 'li' )
-		li.innerHTML = `<button onclick="toggleMask('${ label }')"> ${ label } </button><span id="${ label }" class="material-icons">${ status }</span>`
+		li.innerHTML = `<button onclick="toggleMask('${ label }')"> ${ label } </button><span onclick="toggleMask('${ label }')" id="${ label }" class="material-icons">${ status }</span>`
 		li.className = "tagSelect";
 		popup.appendChild( li );
 	}

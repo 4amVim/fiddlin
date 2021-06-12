@@ -19,7 +19,6 @@
         let Brands = new Set();//Choices
         let SortState;//Keeps track of current sorting
         let MaskState = new Set();//Keeps track of current filter
-        let lastScrollTop = 0; //Keeps track of scroll to auto-hide navbar
         let isBrandsOpen;
     </script>
     <script src="main.js"></script>
@@ -84,23 +83,6 @@
             <span id="priceIcon" class="material-icons">import_export</span>
         </button>
     </nav>
-
-    <script>
-        // document.getElementById( "price" ).addEventListener()
-        window.addEventListener( "scroll", function () {
-            var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-            if ( st > lastScrollTop ) {
-                document.getElementById( "navbar" ).style.bottom = "-10%";
-            } else {
-                document.getElementById( "navbar" ).style.bottom = "0px";
-            }
-            lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-            if ( ( window.innerHeight + window.scrollY * 0.8 ) >= document.body.offsetHeight ) {
-                // document.getElementById( "bottommenu" ).offsetHeight = "-100px";
-                document.getElementById( "navbar" ).style.bottom = "-10%";
-            }
-        }, false );
-    </script>
 
 </body>
 
