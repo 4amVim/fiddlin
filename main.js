@@ -112,7 +112,7 @@ function renderList ( cardsList ) {
                         `;
 			div.className = 'card';
 			itemGrid.appendChild( div );
-			itemGrid.append
+			// itemGrid.append
 		}
 
 	}
@@ -120,29 +120,63 @@ function renderList ( cardsList ) {
 }
 
 function brandSelect () {
-	MaskState.add( "Aston Martin" );
-	console.log( 'ok' )
-	document.getElementById( 'buildDropdown' ).style.opacity = 1;
-	console.log( 'ok' )
+	if ( isBrandsOpen == null ) {
+		slideUp( 'brand' );
+		isBrandsOpen = true;
+	} else if ( isBrandsOpen ) {
+		slideDown( 'brand' );
+		isBrandsOpen = null;
+	} else {
+		slideDown( 'build' );
+		slideUp( 'brand' );
+		isBrandsOpen = true;
+	}
 	renderList();
-
 }
 function buildSelect () {
-	MaskState.add( "Aston Martin" );
+	if ( isBrandsOpen == null ) {
+		slideUp( 'build' );
+		isBrandsOpen = false;
+	} else if ( isBrandsOpen ) {
+		slideDown( 'brand' );
+		slideUp( 'build' );
+		isBrandsOpen = false;
+	} else {
+		slideDown( 'build' );
+		isBrandsOpen = null;
+	}
 	renderList();
 
 }
 
-window.addEventListener( "scroll", function () {
-	var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-	if ( st > lastScrollTop ) {
-		document.getElementById( "navbar" ).style.bottom = "0px";
-	} else {
-		document.getElementById( "navbar" ).style.bottom = "-10%";
+function slideDown ( page ) {
+	const popup = document.getElementById( "popup" );
+	popup.className = `popup slide-help2 `;
+	window.requestAnimationFrame( function ( time ) {
+		window.requestAnimationFrame( function () {
+			document.getElementById( "popup" ).className = `${ page } popup slide-down`;
+		} );
+	} );
+}
+
+function slideUp ( page ) {
+	let popup = document.getElementById( "popup" );
+	popup.innerHTML = '';
+	const list = page === 'build' ? Builds : Brands;
+	for ( let item of list ) {
+		const label = item;
+		const status = MaskState.has( label ) ?
+			'check_box_outline_blank' : 'check_box';
+		let li = document.createElement( 'li' )
+		li.innerHTML = `<button> ${ label } </button><span class="material-icons">${ status }</span>`
+		li.className = "tagSelect";
+		popup.appendChild( li );
 	}
-	lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-	if ( ( window.innerHeight + window.scrollY * 1.1 ) >= document.body.offsetHeight ) {
-		// document.getElementById( "bottommenu" ).offsetHeight = "-100px";
-		document.getElementById( "navbar" ).style.bottom = "-10%";
-	}
-}, false );
+	popup.className = `${ page } popup slide-help1`;
+
+	window.requestAnimationFrame( () => {
+		window.requestAnimationFrame( () => {
+			document.getElementById( "popup" ).className = `${ page } popup slide-up`;
+		} );
+	} );
+}

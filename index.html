@@ -20,6 +20,7 @@
         let SortState;//Keeps track of current sorting
         let MaskState = new Set();//Keeps track of current filter
         let lastScrollTop = 0; //Keeps track of scroll to auto-hide navbar
+        let isBrandsOpen;
     </script>
     <script src="main.js"></script>
 </head>
@@ -35,16 +36,41 @@
 
     <script>
     </script>
-    <div class="dropdown" id='buildDropdown'>
-        <ul>
-            <li>idads</li>
-            <li>id</li>
-            <li>id</li>
-            <li>id</li>
-            <li>id</li>
-            <li>id</li>
-        </ul>
-    </div>
+    <ul class="popup slide-help1" id='popup'>
+        <!-- <li class="tagSelect"> <button> Asd</button>
+            <span class="material-icons">check_box</span>
+        </li>
+        <li class="tagSelect"> <button> Asd</button>
+            <span class="material-icons">check_box</span>
+        </li>
+        <li class="tagSelect"> <button> Asd</button>
+            <span class="material-icons">check_box</span>
+        </li>
+        <li class="tagSelect"> <button> Asd</button>
+            <span class="material-icons">check_box</span>
+        </li>
+        <li class="tagSelect"> <button> Asd</button>
+            <span class="material-icons">check_box</span>
+        </li>
+        <li class="tagSelect"> <button> Asd</button>
+            <span class="material-icons">check_box</span>
+        </li>
+        <li class="tagSelect"> <button> Asd</button>
+            <span class="material-icons">check_box</span>
+        </li>
+        <li class="tagSelect"> <button> Asd</button>
+            <span class="material-icons">check_box</span>
+        </li>
+        <li class="tagSelect"> <button> Asd</button>
+            <span class="material-icons">check_box</span>
+        </li>
+        <li class="tagSelect"> <button> Asd</button>
+            <span class="material-icons">check_box</span>
+        </li>
+        <li class="tagSelect"> <button> Asd</button>
+            <span class="material-icons">check_box</span>
+        </li> -->
+    </ul>
     <footer>
         <h3>
             <img src="https://cdn.discordapp.com/emojis/621517681379770383.gif?v=1" style="max-height:32px">
@@ -74,6 +100,22 @@
         </button>
     </nav>
 
+    <script>
+        // document.getElementById( "price" ).addEventListener()
+        window.addEventListener( "scroll", function () {
+            var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+            if ( st > lastScrollTop ) {
+                document.getElementById( "navbar" ).style.bottom = "0px";
+            } else {
+                document.getElementById( "navbar" ).style.bottom = "-10%";
+            }
+            lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+            if ( ( window.innerHeight + window.scrollY * 1.1 ) >= document.body.offsetHeight ) {
+                // document.getElementById( "bottommenu" ).offsetHeight = "-100px";
+                document.getElementById( "navbar" ).style.bottom = "-10%";
+            }
+        }, false );
+    </script>
 
 </body>
 
