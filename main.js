@@ -150,11 +150,10 @@ function buildSelect () {
 }
 
 function slideDown ( page ) {
-	const popup = document.getElementById( "popup" );
-	popup.className = `popup slide-help2 `;
+	document.getElementById( "popup" ).className = `${ page } slide-help2 `;
 	window.requestAnimationFrame( function ( time ) {
 		window.requestAnimationFrame( function () {
-			document.getElementById( "popup" ).className = `${ page } popup slide-down`;
+			document.getElementById( "popup" ).className = `${ page } slide-down`;
 		} );
 	} );
 }
@@ -168,7 +167,7 @@ function slideUp ( page ) {
 		const status = MaskState.has( label ) ?
 			'check_box_outline_blank' : 'check_box';
 		let li = document.createElement( 'li' )
-		li.innerHTML = `<button> ${ label } </button><span class="material-icons">${ status }</span>`
+		li.innerHTML = `<button onclick="toggleMask('${ label }')"> ${ label } </button><span id="${ label }" class="material-icons">${ status }</span>`
 		li.className = "tagSelect";
 		popup.appendChild( li );
 	}
@@ -176,7 +175,19 @@ function slideUp ( page ) {
 
 	window.requestAnimationFrame( () => {
 		window.requestAnimationFrame( () => {
-			document.getElementById( "popup" ).className = `${ page } popup slide-up`;
+			document.getElementById( "popup" ).className = `${ page } slide-up`;
 		} );
 	} );
+}
+
+function toggleMask ( name ) {
+	console.log( 'heyo' );
+	if ( MaskState.has( name ) ) {
+		document.getElementById( name ).innerHTML = 'check_box';
+		MaskState.delete( name );
+	} else {
+		document.getElementById( name ).innerHTML = 'check_box_outline_blank';
+		MaskState.add( name );
+	}
+	renderList();
 }

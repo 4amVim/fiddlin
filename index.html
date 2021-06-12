@@ -26,6 +26,24 @@
 </head>
 
 <body>
+    <div class="callout" onclick="this.style.display='none';">
+        <h1>Welcome to AutoSale</h1>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">close</span>
+        <span>Finding a decent car is such a drag. We'll help you filter them via </span>
+        <span style="color:var(--text-brand-light)">model</span>
+        <span> and </span>
+        <span style="color:var(--text-model)">make</span>
+        <span>while sorting by</span>
+        <span style="color:var(--text-years)">age</span>
+        <span>as well as their</span>
+        <span style="color:var(--text-price)">price</span>
+        <span>.</span>
+        <span style="font-size: 16px;"> Click to dismiss</span>
+        <div class="callout-container">
+            <p> </p>
+        </div>
+    </div>
+
     <div id="item_grid"></div>
     <script>
         _getData().then( data => {
@@ -36,40 +54,7 @@
 
     <script>
     </script>
-    <ul class="popup slide-help1" id='popup'>
-        <!-- <li class="tagSelect"> <button> Asd</button>
-            <span class="material-icons">check_box</span>
-        </li>
-        <li class="tagSelect"> <button> Asd</button>
-            <span class="material-icons">check_box</span>
-        </li>
-        <li class="tagSelect"> <button> Asd</button>
-            <span class="material-icons">check_box</span>
-        </li>
-        <li class="tagSelect"> <button> Asd</button>
-            <span class="material-icons">check_box</span>
-        </li>
-        <li class="tagSelect"> <button> Asd</button>
-            <span class="material-icons">check_box</span>
-        </li>
-        <li class="tagSelect"> <button> Asd</button>
-            <span class="material-icons">check_box</span>
-        </li>
-        <li class="tagSelect"> <button> Asd</button>
-            <span class="material-icons">check_box</span>
-        </li>
-        <li class="tagSelect"> <button> Asd</button>
-            <span class="material-icons">check_box</span>
-        </li>
-        <li class="tagSelect"> <button> Asd</button>
-            <span class="material-icons">check_box</span>
-        </li>
-        <li class="tagSelect"> <button> Asd</button>
-            <span class="material-icons">check_box</span>
-        </li>
-        <li class="tagSelect"> <button> Asd</button>
-            <span class="material-icons">check_box</span>
-        </li> -->
+    <ul class="slide-help1" id='popup'>
     </ul>
     <footer>
         <h3>
@@ -105,12 +90,12 @@
         window.addEventListener( "scroll", function () {
             var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
             if ( st > lastScrollTop ) {
-                document.getElementById( "navbar" ).style.bottom = "0px";
-            } else {
                 document.getElementById( "navbar" ).style.bottom = "-10%";
+            } else {
+                document.getElementById( "navbar" ).style.bottom = "0px";
             }
             lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-            if ( ( window.innerHeight + window.scrollY * 1.1 ) >= document.body.offsetHeight ) {
+            if ( ( window.innerHeight + window.scrollY * 0.8 ) >= document.body.offsetHeight ) {
                 // document.getElementById( "bottommenu" ).offsetHeight = "-100px";
                 document.getElementById( "navbar" ).style.bottom = "-10%";
             }
