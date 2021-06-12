@@ -58,6 +58,8 @@ span {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border: 2.4px solid var(--misc-light);
+  -webkit-box-shadow: 0 16px 16vh 8px var(--misc-dark);
+  -moz-box-shadow: 0 16px 16vh 8px var(--misc-dark);
   box-shadow: 0 16px 16vh 8px var(--misc-dark);
 }
 
