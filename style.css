@@ -62,7 +62,7 @@ html > * {
   align-self: center;
   justify-content: space-around;
   grid-template-columns: repeat(auto-fit, minmax(160px, 320px));
-  grid-template-rows: repeat(auto-fill, minmax(110px, 240px));
+  grid-template-rows: repeat(auto-fit, minmax(110px, 240px));
   padding: 4px;
 }
 
@@ -86,10 +86,10 @@ html > * {
 .card > img {
   object-fit: fill;
   overflow: hidden;
-  min-width: 100%;
   border-radius: 17px;
   min-height: 100%;
   max-width: 100%;
+  min-width: 100%;
   max-height: 100%;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
