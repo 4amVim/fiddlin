@@ -54,7 +54,6 @@ html > * {
   margin: 0;
 }
 
-/* Style the main grid and its items*/
 #item_grid {
   box-sizing: outline-box;
   display: grid;
@@ -62,9 +61,10 @@ html > * {
   align-self: center;
   justify-content: space-around;
   grid-template-columns: repeat(auto-fit, minmax(160px, 320px));
-  grid-template-rows: repeat(auto-fit, minmax(110px, 240px));
+  grid-template-rows: repeat(auto-fit, minmax(110px, 1fr));
   padding: 4px;
 }
+/* Style the main grid and its items*/
 
 .card {
   display: grid;
@@ -75,7 +75,7 @@ html > * {
   margin: 16px;
   /* Following are required to make all cards the same size */
   width: 90%;
-  /* margin:0.5rem; */
+  margin: 4px;
   height: 90%;
   border-radius: 24px;
   background-color: var(--card-bg);
@@ -337,4 +337,17 @@ ul > p {
   right: 10px;
   font-size: 55px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  #item_grid {
+    box-sizing: outline-box;
+    display: grid;
+    place-items: center;
+    align-self: center;
+    justify-content: space-around;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(auto-fill);
+    padding: 4px;
+  }
 }
