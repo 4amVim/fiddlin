@@ -18,7 +18,7 @@
 }
 :root {
   --background: #b8d4e3;
-  --navbar: #98ECBC;
+  --navbar: #98ecbc;
 
   --highlight: #98c1d7;
 
@@ -32,8 +32,8 @@
   --text-brand-light: #23ebb2;
   --text-brand: #09bc8a;
   --text-price: #5d99ac;
-  --text-years: #F68E5F;
-  --text-model: #7E47FF;
+  --text-years: #f68e5f;
+  --text-model: #7e47ff;
 
   --misc-light: #90e0e0; /*#c0eded;*/
   --misc-light2: #79addc;
@@ -62,7 +62,10 @@ html > * {
   align-self: center;
   justify-content: space-around;
   grid-template-columns: repeat(auto-fit, minmax(160px, 320px));
-  grid-template-rows: repeat(auto-fill, minmax(clamp(40px, 10%vw, 240px), 10%));
+  grid-template-rows: repeat(
+    auto-fill,
+    minmax(clamp(200px, 250px, auto), 400px)
+  );
   padding: 4px;
 }
 
