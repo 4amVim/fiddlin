@@ -131,7 +131,7 @@ function renderList ( cardsList ) {
                         <span class="model">${ card.Model }<\span>
                     </h1>
                     <h1>
-                        <span class="year">${ card.Price }$</span>
+                        <span class="year">$${ card.Price }</span>
                         <span class="age">${ age } years old</span>
                     </h1>
                         `;

@@ -18,7 +18,7 @@
 }
 :root {
   --background: #b8d4e3;
-  --navbar: #78bce6;
+  --navbar: #98ECBC;
 
   --highlight: #98c1d7;
 
@@ -32,8 +32,8 @@
   --text-brand-light: #23ebb2;
   --text-brand: #09bc8a;
   --text-price: #5d99ac;
-  --text-years: #ed966f;
-  --text-model: #6c0aff;
+  --text-years: #F68E5F;
+  --text-model: #7E47FF;
 
   --misc-light: #90e0e0; /*#c0eded;*/
   --misc-light2: #79addc;
@@ -230,11 +230,13 @@ footer {
   position: relative;
   display: grid;
   place-items: center;
-  top: -5.2vh;
+  background-color: #274156;
+  background-image: linear-gradient(var(--background), var(--navbar));
+  margin-bottom: 56px;
 }
 
 footer > h3 {
-  color: var(--misc-light);
+  color: var(--misc-dark);
   text-align: center;
   margin-bottom: 0;
   margin-top: 48px;
@@ -274,9 +276,9 @@ ul::-webkit-scrollbar {
 .tagSelect {
   box-sizing: border-box;
   display: flex;
-  border: 3.6px solid;
+  border: 3px solid;
   border-radius: 2px;
-  border-bottom: none;
+  margin-bottom: 2px;
 }
 
 .tagSelect > * {
