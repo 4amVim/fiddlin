@@ -12,23 +12,27 @@ async function _getData () {
 
 // Pass this 'year' or 'price' and it'll increment a sort in that direction
 function sort ( field ) {
-	const icon = document.getElementById( `${ field }Icon` );
+	const icon = document.getElementById( `${ field }icon` );
+	const label = document.getElementById( `${ field }label` );
 	let sort; //Shows us the utility of a quadratic boolean
 	switch ( icon.innerHTML ) {
-		case "import_export":
-			icon.innerHTML = "trending_up";
+		case '':
+			label.innerHTML = '';
+			icon.innerHTML = 'trending_up';
+			// icon.classList.add( 'material-icons' );
 			sort = true;
 			break;
-		case "trending_up":
+		case 'trending_up':
 			icon.innerHTML = "trending_down";
 			sort = false;
 			break;
-		case "trending_down":
-			icon.innerHTML = "import_export";
+		case 'trending_down':
+			icon.innerHTML = '';
+			label.innerHTML = 'sort by';
 			sort = null;
 			break;
 		default:
-			console.error( "How did I come here, what am I doing?!" )
+			console.error( 'How did I come here, what am I doing?!' )
 			break;
 	}
 	const db = Data.data.slice();
@@ -38,8 +42,8 @@ function sort ( field ) {
 		document.getElementById( foo ).className = foo;
 	} else {
 		if ( field == 'year' ) {
-			sort ? renderList( db.sort( ( a, b ) => a.Year - b.Year ) )
-				: renderList( db.sort( ( a, b ) => b.Year - a.Year ) )
+			sort ? renderList( db.sort( ( a, b ) => b.Year - a.Year ) )
+				: renderList( db.sort( ( a, b ) => a.Year - b.Year ) );
 		} else {
 			sort ? renderList( db.sort( ( a, b ) => a.Price - b.Price ) )
 				: renderList( db.sort( ( a, b ) => b.Price - a.Price ) );
@@ -86,18 +90,20 @@ function renderList ( cardsList ) {
 }
 
 function dropup ( sortButton ) {
+	populateDropup( sortButton );
 	function slide ( ul, up ) {
 		window.requestAnimationFrame( function () {
-			document.getElementById( `${ ul }-popup` ).style.transform = up ? 'translateY(calc(4px - 10em))' : 'translateY(calc(10em - 4px))';
+			document.getElementById( `${ ul }-dropup` ).style.transform = up ? 'translateY(calc(4px - 10em))' : 'translateY(calc(10em - 4px))';
 		} )
 	}
 	if ( isBrandsOpen == null ) {
 		slide( sortButton, true );
 	} else {
 		let foo = isBrandsOpen ? 'brand' : 'model';
+		populateDropup( foo );
 		if ( sortButton == foo ) {
 			slide( sortButton, false );
-			isBrandsOpen=null;
+			isBrandsOpen = null;
 			return;
 		} else {
 			slide( foo, false );
@@ -107,19 +113,20 @@ function dropup ( sortButton ) {
 	isBrandsOpen = sortButton == 'brand';
 }
 
-function slideDown ( page ) {
-	document.getElementById( "popup" ).className = `${ page } slide-help2 `;
-	window.requestAnimationFrame( function ( time ) {
-		window.requestAnimationFrame( function () {
-			document.getElementById( "popup" ).className = `${ page } slide-down`;
-		} );
-	} );
-}
-
-function slideUp ( page ) {
-	let popup = document.getElementById( "popup" );
-	popup.innerHTML = '';
+function populateDropup ( page ) {
+	let dropup = document.getElementById( `${ page }-dropup` );
+	dropup.innerHTML = '';
 	const list = page === 'model' ? ModelList : BrandList;
+
+	function generateIntro ( page ) {
+		let intro = document.createElement( 'span' );
+		intro.innerHTML = `Filter cars by thier ${ page }s`;
+
+		return intro
+	}
+
+	dropup.appendChild( generateIntro( page ) );
+
 	for ( let item of list ) {
 		const label = item;
 		const status = MaskState.has( label ) ?
@@ -127,19 +134,11 @@ function slideUp ( page ) {
 		let li = document.createElement( 'li' )
 		li.innerHTML = `<button onclick="toggleMask('${ label }')"> ${ label } </button><span onclick="toggleMask('${ label }')" id="${ label }" class="material-icons">${ status }</span>`
 		li.className = "tagSelect";
-		popup.appendChild( li );
+		dropup.appendChild( li );
 	}
-	popup.className = `${ page } popup slide-help1`;
-
-	window.requestAnimationFrame( () => {
-		window.requestAnimationFrame( () => {
-			document.getElementById( "popup" ).className = `${ page } slide-up`;
-		} );
-	} );
 }
 
 function toggleMask ( name ) {
-	console.log( 'heyo' );
 	if ( MaskState.has( name ) ) {
 		document.getElementById( name ).innerHTML = 'check_box';
 		MaskState.delete( name );
