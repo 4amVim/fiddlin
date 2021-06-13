@@ -128,11 +128,17 @@ button {
   border: 2px solid;
   transition: 0.6s;
   font-size: 24px;
-  width: 200px;
+  /* width: 200px; */
   border-radius: 16px;
   padding: 1.6px 12px 0;
   z-index: 2;
-  /* transition-property: all; */
+  transition-property: all;
+}
+
+button > * {
+  padding: 1.6px;
+  transition-property: all;
+  transition: 0.6s;
 }
 
 /* button:hover {
@@ -146,20 +152,23 @@ button {
   white-space: nowrap;
   font-size: 15px;
   margin-top: 0;
-  padding-bottom: 10px;
-  /* animation: bigsmall 3s ease-in-out infinite alternate forwards; */
+  width: 50px;
+  padding-right: 1.6px;
   overflow: hidden;
   display: inline-block;
 }
 
-@keyframes bigsmall {
+@keyframes tryAnimation {
+  /* animation: tryAnimation 3s ease-in-out infinite alternate forwards; */
   0% {
-    padding-right: 0;
-    width: 0;
+    font-size: 0;
+    max-width: 0;
+    min-width: 0;
   }
   100% {
-    padding-right: 4px;
-    width: 50px;
+    max-width: auto;
+    min-width: auto;
+    font-size: 150%;
   }
 }
 

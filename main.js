@@ -13,13 +13,15 @@ async function _getData () {
 // Pass this 'year' or 'price' and it'll increment a sort in that direction
 function sort ( field ) {
 	const icon = document.getElementById( `${ field }icon` );
-	const label = document.getElementById( `${ field }label` );
-	let sort; //Shows us the utility of a quadratic boolean
+	let sort; //?Shows us the utility of a quadratic boolean
+
+	//?figure out which direction to sort in and icon and label
 	switch ( icon.innerHTML ) {
 		case '':
-			label.innerHTML = '';
+			toggleLabel( field, false );
+			const altField = ( field == 'year' ) ? 'price' : 'year';
+			if ( document.getElementById( `${ altField }icon` ).innerHTML != '' ) { toggleLabel( altField, true ); }
 			icon.innerHTML = 'trending_up';
-			// icon.classList.add( 'material-icons' );
 			sort = true;
 			break;
 		case 'trending_up':
@@ -27,29 +29,82 @@ function sort ( field ) {
 			sort = false;
 			break;
 		case 'trending_down':
-			icon.innerHTML = '';
-			label.innerHTML = 'sort by';
+			toggleLabel( field, true );
 			sort = null;
 			break;
 		default:
 			console.error( 'How did I come here, what am I doing?!' )
 			break;
 	}
+
+	function toggleLabel ( field, remove ) {
+		window.requestAnimationFrame( () => {
+			document.getElementById( `${ field }label` ).animate( [
+				{ // from
+					'padding-right': '4px',
+					'padding-bottom': '10px',
+					width: '50px'
+				},
+				{ // to
+					padding: 0,
+					width: 0,
+				}
+			], {
+				delay: 30,
+				direction: remove ? 'reverse' : 'normal',
+				duration: 500,
+				fill: 'forwards',
+				easing: 'ease-in-out'
+			} );
+			if ( remove ) {
+				document.getElementById( `${ field }icon` ).innerHTML = '';
+			}
+		} );
+	}
+
+	function toggleIcon ( remove ) {
+		console.log( 'gonna toggle the icon' );
+		window.requestAnimationFrame( () => {
+			console.log( 'gonna toggle the icon i swear' );
+			console.log( 'gonna toggle the icon for real' );
+			window.requestAnimationFrame( () => {
+				icon.innerHTML = 'trending_up';
+				icon.classList.add( 'icon' );
+				if ( icon.style.animationPlayState == 'paused' ) {
+					icon.style.animationPlayState = 'running';
+
+				} else {
+					console.log( 'gonna toggle the icon NOW' );
+					icon.animate( [
+						{ // from
+							'font-size': 0,
+							'max-width': 1
+						},
+						{ // to
+							'max-width': 'auto',
+							'font-size': '150%'
+						}
+					], {
+						delay: 30,
+						direction: remove ? 'reverse' : 'normal',
+						duration: 500,
+						fill: 'forwards',
+						easing: 'ease-in-out'
+					} );
+				}
+			} );
+		} );
+	}
+
+
 	const db = Data.data.slice();
-	const foo = ( field == 'year' ) ? 'year' : 'price';
+	//? Sort the list and redraw
 	if ( sort == null ) {
 		renderList( db );
-		document.getElementById( foo ).className = foo;
 	} else {
-		if ( field == 'year' ) {
-			sort ? renderList( db.sort( ( a, b ) => b.Year - a.Year ) )
-				: renderList( db.sort( ( a, b ) => a.Year - b.Year ) );
-		} else {
-			sort ? renderList( db.sort( ( a, b ) => a.Price - b.Price ) )
-				: renderList( db.sort( ( a, b ) => b.Price - a.Price ) );
-		}
-		document.getElementById( foo ).className = `${ foo }Sorted`
-		document.getElementById( field ).className = field;
+		field == 'year' ?
+			renderList( db.sort( ( a, b ) => ( b.Year - a.Year ) * ( 2 * sort - 1 ) ) ) :
+			renderList( db.sort( ( a, b ) => ( a.Price - b.Price ) * ( 2 * sort - 1 ) ) );
 	}
 }
 
@@ -60,14 +115,11 @@ function renderList ( cardsList ) {
 	} else {
 		SortState = cardsList;//So that we always have a list with the latest Sort
 	}
-	console.log( cardsList );
 	const itemGrid = document.getElementById( 'item_grid' );
 	itemGrid.innerHTML = '';
 	for ( let i = 0; i < cardsList.length; i++ ) {
-
 		const card = cardsList[i];
 		if ( !( MaskState.has( card.Make ) || MaskState.has( card.Model ) ) ) {
-			console.log( card )
 			let div = document.createElement( 'div' );
 			let age = ( new Date() ).getFullYear() - card.Year;
 			ModelList.add( card.Model );
@@ -87,6 +139,7 @@ function renderList ( cardsList ) {
 			itemGrid.appendChild( div );
 		}
 	}
+	console.log( 'redrew' );
 }
 
 function dropup ( sortButton ) {
