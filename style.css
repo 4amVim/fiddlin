@@ -32,12 +32,12 @@
   --text-brand-light: #23ebb2;
   --text-brand: #09bc8a;
   --text-price: #5d99ac;
-  --text-years: #6c0aff;
-  --text-model: #c0eded;
+  --text-years: #ed966f;
+  --text-model: #6c0aff;
 
   --misc-light: #90e0e0; /*#c0eded;*/
   --misc-light2: #79addc;
-  --misc-dark: #4a827d; /*3c6966;*/
+  --misc-dark: #5898d3; /*3c6966;*/
 }
 
 /* Basic setup */
@@ -48,7 +48,8 @@ html > * {
   transition: 0.6s;
   transition-timing-function: ease-in-out;
   background-color: var(--background);
-  font-family: "Belgrano", serif;
+  /* font-family: "Belgrano", serif; */
+  font-family: "Source Sans Pro", sans-serif;
   width: 100%;
   margin: 0;
 }
@@ -102,6 +103,10 @@ span {
   margin: 0;
 }
 
+/* h1 > span{
+
+} */
+
 /* Navbar and its descendants */
 #navbar {
   display: flex;
@@ -135,23 +140,11 @@ button {
   transition-property: all;
 }
 
-button > * {
-  padding: 1.6px;
-  transition-property: all;
-  transition: 0.6s;
-}
-
-/* button:hover {
-  min-width: 50px;
-  transition: 1.6s;
-  transition-property: all;
-  width: 500px;
-} */
-
 .sort {
   white-space: nowrap;
   font-size: 15px;
   margin-top: 0;
+  margin-bottom: auto;
   width: 50px;
   padding-right: 1.6px;
   overflow: hidden;
@@ -190,10 +183,10 @@ button > * {
 .price:hover {
   background-color: var(--text-price);
   color: var(--on-navbar);
-  font-size: 24px;
+  /* font-size: 24px; */
 }
 
-.menuButton {
+[onclick^="dropup"] {
   border-radius: 8px;
   height: 100%;
   padding: 0 16px 0 4px;
@@ -208,11 +201,6 @@ nav > .model::before {
   content: "\e5c7";
 }
 
-.menuButton:hover {
-  color: var(--on-navbar);
-  padding: 4px 18px 2px 4px;
-  /* margin-top: -2px; */
-}
 .brand {
   color: var(--text-brand);
   /* background-color: var(--text-brand); */
@@ -256,7 +244,7 @@ footer > img {
   max-width: 35px;
 }
 
-/* Dropup menus and animations */
+/* Dropup menus */
 ul {
   box-sizing: border-box;
   display: flex;
@@ -277,7 +265,7 @@ ul {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   /* min-height: 30vh; */
-  background-color: var(--highlight);
+  background-color: var(--misc-dark);
   scrollbar-width: none;
 }
 ul::-webkit-scrollbar {
@@ -308,36 +296,11 @@ ul > p {
 .tagSelect > button {
   flex-grow: 1;
   border: none;
-  margin-right: 0;
+  margin: 0;
 }
 
 #tags {
   flex-grow: 1;
-}
-
-.slide-help1 {
-  max-height: 0;
-}
-.slide-help2 {
-  max-height: 30vh;
-}
-
-.slide-down {
-  animation: slide 1s ease-in-out reverse forwards;
-}
-
-.slide-up {
-  animation: slide 1s forwards;
-}
-
-@keyframes slide {
-  0% {
-    max-height: 0;
-  }
-
-  100% {
-    max-height: 30vh;
-  }
 }
 
 /* Inform the user of features */
