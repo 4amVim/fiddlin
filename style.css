@@ -62,10 +62,7 @@ html > * {
   align-self: center;
   justify-content: space-around;
   grid-template-columns: repeat(auto-fit, minmax(160px, 320px));
-  grid-template-rows: repeat(
-    auto-fill,
-    minmax(clamp(200px, 250px, auto), 240px)
-  );
+  grid-template-rows: repeat(auto-fill, minmax(110px, 240px));
   padding: 4px;
 }
 
