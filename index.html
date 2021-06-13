@@ -65,27 +65,27 @@
         <img src="https://cdn.discordapp.com/emojis/726345238406234232.gif?v=1" alt=":birbparty:">
         <p style="color:var(--misc-dark)">Rights reserved by birbcorp</p>
     </footer>
-    <nav id="navbar">
-        <button onclick="dropup('brand')" class="menuButton brand">Brands</button>
-        <button onclick="dropup('model')" class="menuButton build">Builds</button>
+    <nav id='navbar'>
+        <button id='brand' onclick="dropup('brand')" class='menuButton brand'>Brands</button>
+        <button id='model' onclick="dropup('model')" class='menuButton model'>Builds</button>
 
         <div id="tags"></div>
 
-        <button id="year" onclick="sort('year')" class="year">
-            <span id="yearlabel" class="sort">sort by</span>
+        <button id='year' onclick="sort('year')" class='year'>
+            <span id='yearlabel' class='sort'>sort by</span>
             <span>Age</span>
-            <span id="yearicon" class="material-icons"></span>
+            <span id='yearicon' class='material-icons'></span>
         </button>
-        <button id="price" onclick="sort('price')" class="price">
+        <button id='price' onclick="sort('price')" class='price'>
             <!-- <span id="priceIcon" class="material-icons">import_export</span> -->
-            <span id="pricelabel" class="sort">sort by</span>
+            <span id='pricelabel' class='sort'>sort by</span>
             <span>Price</span>
-            <span id="priceicon" class="material-icons"></span>
+            <span id='priceicon' class='material-icons'></span>
         </button>
     </nav>
-    <ul id='brand-dropup' class="brand">
+    <ul id='brand-dropup' class='brand'>
     </ul>
-    <ul id='model-dropup' class="model">
+    <ul id='model-dropup' class='model'>
     </ul>
 
 </body>

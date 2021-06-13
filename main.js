@@ -146,7 +146,8 @@ function dropup ( sortButton ) {
 	populateDropup( sortButton );
 	function slide ( ul, up ) {
 		window.requestAnimationFrame( function () {
-			document.getElementById( `${ ul }-dropup` ).style.transform = up ? 'translateY(calc(4px - 10em))' : 'translateY(calc(10em - 4px))';
+			document.getElementById( `${ ul }-dropup` ).style.transform = up ? 'translateY(calc(4px - 30vh))' : 'translateY(calc(30vh - 4px))';
+			document.getElementById( ul ).classList.toggle( `${ ul }Hover` )
 		} )
 	}
 	if ( isBrandsOpen == null ) {
@@ -164,32 +165,32 @@ function dropup ( sortButton ) {
 		}
 	}
 	isBrandsOpen = sortButton == 'brand';
+
+	function populateDropup ( page ) {
+		let dropup = document.getElementById( `${ page }-dropup` );
+		dropup.innerHTML = '';
+		const list = page === 'model' ? ModelList : BrandList;
+
+		function generateIntro ( page ) {
+			let intro = document.createElement( 'p' );
+			intro.innerHTML = `Filter cars by their ${ page }s:`;
+			return intro
+		}
+
+		dropup.appendChild( generateIntro( page ) );
+
+		for ( let item of list ) {
+			const label = item;
+			const status = MaskState.has( label ) ?
+				'check_box_outline_blank' : 'check_box';
+			let li = document.createElement( 'li' )
+			li.innerHTML = `<button onclick="toggleMask('${ label }')"><span onclick="toggleMask('${ label }')" id="${ label }" class="material-icons">${ status }</span>${ label } </button>`
+			li.className = "tagSelect";
+			dropup.appendChild( li );
+		}
+	}
 }
 
-function populateDropup ( page ) {
-	let dropup = document.getElementById( `${ page }-dropup` );
-	dropup.innerHTML = '';
-	const list = page === 'model' ? ModelList : BrandList;
-
-	function generateIntro ( page ) {
-		let intro = document.createElement( 'span' );
-		intro.innerHTML = `Filter cars by thier ${ page }s`;
-
-		return intro
-	}
-
-	dropup.appendChild( generateIntro( page ) );
-
-	for ( let item of list ) {
-		const label = item;
-		const status = MaskState.has( label ) ?
-			'check_box_outline_blank' : 'check_box';
-		let li = document.createElement( 'li' )
-		li.innerHTML = `<button onclick="toggleMask('${ label }')"> ${ label } </button><span onclick="toggleMask('${ label }')" id="${ label }" class="material-icons">${ status }</span>`
-		li.className = "tagSelect";
-		dropup.appendChild( li );
-	}
-}
 
 function toggleMask ( name ) {
 	if ( MaskState.has( name ) ) {

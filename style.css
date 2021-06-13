@@ -26,7 +26,7 @@
 
   --card-bg: #eef6fc;
 
-  --on-navbar: #38636b;
+  --on-navbar: #172a3a;
   --navbar-slider: #fdedb0;
 
   --text-brand-light: #23ebb2;
@@ -202,7 +202,8 @@ button > * {
   align-self: start;
   margin-left: 4px;
 }
-.menuButton::before {
+nav > .brand::before,
+nav > .model::before {
   font-family: "Material Icons";
   content: "\e5c7";
 }
@@ -214,16 +215,26 @@ button > * {
 }
 .brand {
   color: var(--text-brand);
+  /* background-color: var(--text-brand); */
 }
-.brand:hover {
+nav > .brand:hover,
+.brandHover {
   background-color: var(--text-brand);
+  color: var(--on-navbar);
 }
 
-.build {
+.model {
   color: var(--text-model);
 }
-.build:hover {
+nav > .model:hover,
+.modelHover {
   background-color: var(--text-model);
+  color: var(--on-navbar);
+}
+nav > .brandHover::before,
+nav > .modelHover::before {
+  font-family: "Material Icons";
+  content: "\e5d6";
 }
 
 /* Footer related stuff */
@@ -247,61 +258,57 @@ footer > img {
 
 /* Dropup menus and animations */
 ul {
-  box-sizing: outline-box;
+  box-sizing: border-box;
   display: flex;
   position: fixed;
-  height: 10em;
+  height: 30vh;
+  bottom: calc(56px - 30vh);
+  /* bottom: 0; */
+  padding: 8px;
 
-  bottom: calc(56px - 10em);
   transition: 1s;
   z-index: 1;
-  margin: 0;
+  margin: 0 0 0 4px;
   flex-direction: column;
   overflow-y: auto;
-  width: 240px;
+  width: 250px;
   opacity: 1;
-  /* min-height: 30vh; */
   border-radius: 8px;
-  background-color: var(--navbar);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  /* min-height: 30vh; */
+  background-color: var(--highlight);
   scrollbar-width: none;
 }
-.example::-webkit-scrollbar {
+ul::-webkit-scrollbar {
   display: none;
 }
-
 .tagSelect {
   box-sizing: border-box;
   display: flex;
   border: 3.6px solid;
-  border-radius: 2;
+  border-radius: 2px;
   border-bottom: none;
 }
 
 .tagSelect > * {
-  transition: all 0.6s;
-  transition-timing-function: ease-in;
   color: inherit;
   border-radius: 0;
   padding: 4px 8px;
-  background-color: var(--on-navbar);
-  margin: 0;
-  /* width: 100%; */
   cursor: default;
-
   z-index: 3;
+}
+ul > p {
+  color: var(--on-navbar);
+  font-size: 16px;
+  padding: 2px;
+  margin: 0;
 }
 
 .tagSelect > button {
-  border: none;
-  margin-right: -1px;
   flex-grow: 1;
-}
-
-.tagSelect > span {
-  font-size: 32px;
-  align-self: stretch;
-  margin-left: auto;
-  transition: all 1s;
+  border: none;
+  margin-right: 0;
 }
 
 #tags {
