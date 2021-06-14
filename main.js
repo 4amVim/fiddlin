@@ -186,16 +186,14 @@ function dropup ( sortButton ) {
 
 function toggleMask ( name ) {
 	console.log( 'I got toggled' + name );
-	window.requestAnimationFrame( () => {
-		if ( MaskState.has( name ) ) {
-			document.getElementById( name ).innerHTML = 'check_box';
-			MaskState.delete( name );
-		} else {
-			document.getElementById( name ).innerHTML = 'check_box_outline_blank';
-			MaskState.add( name );
-		}
-		renderList();
-	} );
+	if ( MaskState.has( name ) ) {
+		document.getElementById( name ).innerHTML = 'check_box';
+		MaskState.delete( name );
+	} else {
+		document.getElementById( name ).innerHTML = 'check_box_outline_blank';
+		MaskState.add( name );
+	}
+	renderList();
 }
 
 function search () {
