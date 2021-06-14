@@ -132,7 +132,7 @@ function renderList ( cardsList ) {
                     </h1>
                     <h1>
                         <span class="year">$${ card.Price }</span>
-                        <span class="age">${ age } years old</span>
+                        <span class="age">${ age } years </span>
                     </h1>
                         `;
 			div.className = 'card';
