@@ -14,12 +14,10 @@
 
     <!-- REMOVE THIS -->
     <link rel="shortcut icon" href="https://cdn.discordapp.com/emojis/505944972285968394.gif?v=1">
-    <script>let Data;//Caches the fetched object
+    <script>let Data,SortState,isBrandsOpen;//Caches the fetched object
         let ModelList = new Set();//Choices
         let BrandList = new Set();//Choices
-        let SortState;//Keeps track of current sorting
         let MaskState = new Set();//Keeps track of current filter
-        let isBrandsOpen;
     </script>
     <script src="main.js"></script>
 </head>
@@ -64,7 +62,8 @@
         <button id='brand' onclick="dropup('brand')" class='brand' alt="How old is it?">Brands</button>
         <button id='model' onclick="dropup('model')" class='model'>Builds</button>
 
-        <div id="tags"></div>
+        <input type="text" id="search" onkeyup="search()" placeholder="Search for cars.." title="Type in a name">
+        <!-- <div id="tags"></div> -->
 
         <button id='year' onclick="sort('year')" class='year'>
             <span id='yearlabel' class='sort'>sort by</span>

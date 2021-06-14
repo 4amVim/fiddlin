@@ -332,4 +332,14 @@ ul > p {
   width: min-content;
   cursor: pointer;
 }
+
+#search {
+  flex-grow: 1;
+  background-color: var(--on-navbar);
+  color: var(--dark-text);
+  box-shadow: none;
+  border: none;
+  margin: 0 4px;
+  min-width: 10%;
+}
 /* Portrait and Landscape */

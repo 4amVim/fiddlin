@@ -194,3 +194,19 @@ function toggleMask ( name ) {
 	}
 	renderList();
 }
+
+function search () {
+	let input = document.getElementById( 'search' );
+	let grid = document.getElementById( 'item_grid' )
+
+	const filter = input.value.toLowerCase();
+	let db = Data.data.slice();
+	let filteredb = [];
+	for ( const card of db ) {
+		const match = ( card.Make + card.Model ).toLowerCase();
+		if ( match.includes( filter ) ) {
+			filteredb.push( card );
+		}
+	}
+	renderList( filteredb );
+}
