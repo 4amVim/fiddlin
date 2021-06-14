@@ -87,11 +87,11 @@ html > * {
 .card > img {
   object-fit: fill;
   border-radius: 17px;
-  /* min-height: 0%; */
   min-height: 100%;
   max-width: 100%;
   min-width: 100%;
   max-height: 100%;
+  flex-grow: 1;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   overflow: hidden;
@@ -107,8 +107,10 @@ html > * {
 
 h1,
 span {
+    padding: 2px 4px;
   /* font-size: clamp(16px, 5vw, 24px); */
-  font-size: clamp(clamp(10px, 2vw, 14px), 3vw, 24px);
+  font-size: clamp(clamp(8px, 2vw, 14px), 3vw, 24px);
+  flex-shrink: 1;
   margin: 0;
 }
 
@@ -371,9 +373,10 @@ ul > p {
     margin: 4px;
     height: 90%;
     border-radius: 24px;
-    background-color: gray;
-    border: 24px solid var(--highlight);
-    border-width: 6px;
+    background-color:var(--card-bg);
+    border: 1px solid var(--highlight);
+    /* border: none; */
+    border-width: clamp(1px, 5px, 60px);
   }
 
   .card > img {
@@ -409,7 +412,7 @@ ul > p {
 
     margin: 16px;
     /* Following are required to make all cards the same size */
-    width: 100%;
+    /* width: 100%; */
     margin: 4px;
     height: 90%;
     border-radius: 24px;
@@ -427,7 +430,8 @@ ul > p {
     overflow: hidden;
   }
 
-  .card > span {
-    font-size: clamp(20px, 3vw, 24px);
+  .card > span,
+  .card > h1 {
+    font-size: clamp(8px, 3vw, 24px);
   }
 }
