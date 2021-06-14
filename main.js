@@ -20,8 +20,11 @@ function sort ( field ) {
 		case '':
 			toggleLabel( field, false );
 			const altField = ( field == 'year' ) ? 'price' : 'year';
-			if ( document.getElementById( `${ altField }icon` ).innerHTML != '' ) { toggleLabel( altField, true ); }
+			if ( document.getElementById( `${ altField }icon` ).innerHTML != '' ) {
+				toggleLabel( altField, true );
+			}
 			icon.innerHTML = 'trending_up';
+			document.getElementById( field ).classList.add( `${ field }Sorted` );
 			sort = true;
 			break;
 		case 'trending_up':
@@ -58,6 +61,7 @@ function sort ( field ) {
 			} );
 			if ( remove ) {
 				document.getElementById( `${ field }icon` ).innerHTML = '';
+				document.getElementById( field ).classList.remove( `${ field }Sorted` );
 			}
 		} );
 	}

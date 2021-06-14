@@ -1,21 +1,16 @@
 :root {
   --background: #d3e0ee;
   --navbar: #3e9ae0;
-
-  --highlight: #abcfed;
-
-  --dark-text: #274156;
-
   --card-bg: #f1f5f9;
-
+  --highlight: #abcfed;
   --on-navbar: #366396;
-  --navbar-slider: #fdedb0;
 
   --text-brand: #87e8c1;
   --text-price: #ecc30b;
   --text-years: #f2b47d;
   --text-model: #83d9ec;
 
+  --dark-text: #274156;
   --txt-brand: #2ad48d;
   --txt-price: #f1c80d;
   --txt-years: #e67818;
@@ -30,7 +25,6 @@
 html,
 body,
 html > * {
-  cursor: default;
   transition-timing-function: ease-in-out;
   background-color: var(--background);
   font-family: "Source Sans Pro", sans-serif;
@@ -352,8 +346,9 @@ ul > p {
   flex-grow: 1;
   background-color: var(--on-navbar);
   color: var(--card-bg);
-  box-shadow: none;
   border: none;
+  font-size: 16px;
+  border-radius: 50px;
   margin: 0 4px;
   min-width: 10%;
   min-height: 60%;
@@ -361,7 +356,7 @@ ul > p {
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--card-bg);
+  color: var(--highlight);
   opacity: 1; /* Firefox */
 }
 /* Portrait and Landscape */
