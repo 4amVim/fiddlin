@@ -26,18 +26,22 @@
 
   --card-bg: #f1f5f9;
 
-  --on-navbar: #172a3a;
+  /* --on-navbar: #172a3a; */
+  --on-navbar: #366396;
   --navbar-slider: #fdedb0;
 
-  --text-brand-light: #23ebb2;
-  --text-brand: #09bc8a;
-  --text-price: #5d99ac;
-  --text-years: #f68e5f;
-  --text-model: #7e47ff;
+  --text-brand: #87e8c1;
+  --text-price: #ecc30b;
+  --text-years: #f2b47d;
+  --text-model: #83d9ec;
 
-  --misc-light: #90e0e0; /*#c0eded;*/
-  --misc-light2: #79addc;
-  --misc-dark: #5898d3; /*3c6966;*/
+  --txt-brand: #2ad48d;
+  --txt-price: #21bbdd;
+  --txt-years: #e67818;
+  --txt-model: #f1c80d;
+  /* --misc-light: #90e0e0; */
+  --misc-light2: #5ca4de;
+  --misc-dark: #5898d3;
 }
 
 /* Basic setup */
@@ -109,9 +113,10 @@ h1,
 span {
   padding: 2px 4px;
   /* font-size: clamp(16px, 5vw, 24px); */
-  font-size: clamp(clamp(8px, 2vw, 14px), 3vw, 24px);
+  font-size: clamp(clamp(16px, 2vw, 10px), 3vw, 24px);
   flex-shrink: 1;
   margin: 0;
+  font-weight: lighter;
 }
 
 /* h1 > span{
@@ -149,6 +154,11 @@ button {
   padding: 1.6px 12px 0;
   z-index: 2;
   transition-property: all;
+  font-weight: normal;
+}
+
+button > span {
+  font-weight: normal;
 }
 
 .sort {
@@ -269,7 +279,7 @@ ul {
 
   transition: 1s;
   z-index: 1;
-  margin: 0 0 0 4px;
+  margin: 0 0 0 8px;
   flex-direction: column;
   overflow-y: auto;
   width: 250px;
@@ -289,7 +299,7 @@ ul::-webkit-scrollbar {
   display: flex;
   border: 3px solid;
   border-radius: 2px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .tagSelect > * {
@@ -300,7 +310,7 @@ ul::-webkit-scrollbar {
   z-index: 3;
 }
 ul > p {
-  color: var(--on-navbar);
+  color: var(--dark-text);
   font-size: 16px;
   padding: 2px;
   margin: 0;

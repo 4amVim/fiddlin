@@ -127,12 +127,12 @@ function renderList ( cardsList ) {
 			div.innerHTML = `\
                     <img src=${ card.Image } alt='${ card.Make + ' ' + card.Model }' >
                     <h1>
-                        <span class="brand">${ card.Make }<\span>
-                        <span class="model">${ card.Model }<\span>
+                        <span style="color:var(--txt-brand)">${ card.Make }<\span>
+                        <span style="color:var(--txt-model)"class="model">${ card.Model }<\span>
                     </h1>
                     <h1>
-                        <span class="year">$${ card.Price }</span>
-                        <span class="age">${ age } years </span>
+                        <span style="color:var(--txt-price)">$${ card.Price }</span>
+                        <span style="color:var(--txt-years)">${ age } years </span>
                     </h1>
                         `;
 			div.className = 'card';
