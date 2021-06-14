@@ -234,6 +234,10 @@ footer > h3 {
   margin-top: 48px;
 }
 
+a {
+  white-space: nowrap;
+}
+
 footer > img {
   max-width: 35px;
 }
