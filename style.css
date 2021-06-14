@@ -48,7 +48,6 @@ html > * {
   justify-content: space-evenly;
   grid-template-columns: repeat(auto-fit, minmax(160px, 320px));
   grid-template-rows: repeat(auto-fit, minmax(1fr, 1fr));
-  padding: 0 2%;
   min-width: 100%;
   min-height: 100%;
   transition: all 0.5s ease-out;
@@ -224,14 +223,13 @@ nav > .modelHover::before {
 footer {
   flex-shrink: 0;
   /* bottom: 0; */
-  align-self: flex-en;
+  align-self: flex-end;
 
   display: grid;
   place-items: center;
   background-color: #274156;
   background-image: linear-gradient(var(--background), var(--navbar));
   /* margin-bottom: 56px; */
-  margin-bottom: calc(56px);
 }
 
 footer > h3 {
