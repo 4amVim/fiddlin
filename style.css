@@ -17,14 +17,14 @@
   --misc-dark: #4a827d; /*3c6966;*/
 }
 :root {
-  --background: #b8d4e3;
-  --navbar: #98ecbc;
+  --background: #d3e0ee;
+  --navbar: #3e9ae0;
 
-  --highlight: #98c1d7;
+  --highlight: #abcfed;
 
   --dark-text: #274156;
 
-  --card-bg: #eef6fc;
+  --card-bg: #f1f5f9;
 
   --on-navbar: #172a3a;
   --navbar-slider: #fdedb0;
@@ -59,10 +59,10 @@ html > * {
   display: grid;
   place-items: center;
   align-self: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   grid-template-columns: repeat(auto-fit, minmax(160px, 320px));
-  grid-template-rows: repeat(auto-fit, minmax(110px, 1fr));
-  padding: 4px;
+  grid-template-rows: repeat(auto-fit, minmax(1frx, 1fr));
+  padding: 0 2%;
 }
 /* Style the main grid and its items*/
 
@@ -81,6 +81,8 @@ html > * {
   background-color: var(--card-bg);
   border: 24px solid var(--highlight);
   border-width: 6px;
+  /* box-shadow: inset 0 0 8px var(--misc-light2); */
+  box-shadow: 0 3 8px var(rgb(131, 98, 98));
 }
 
 .card > img {
@@ -340,7 +342,7 @@ ul > p {
 }
 
 /* Portrait and Landscape */
-@media only screen and (min-device-width: 100px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
   #item_grid {
     box-sizing: outline-box;
     display: grid;
@@ -348,35 +350,36 @@ ul > p {
     align-self: center;
     justify-content: space-around;
     grid-template-columns: auto;
-    grid-template-rows: repeat;
+    grid-template-rows: repeat(auto-fit, auto);
   }
-}
-h1 {
-  font-size: 1ex;
-}
+  h1 {
+    font-size: 1ex;
+  }
 
-.card {
-  display: grid;
-  box-sizing: border-box;
-  grid-template-rows: repeat(3, auto);
-  grid-template-columns: 100%;
+  .card {
+    display: grid;
+    box-sizing: border-box;
+    /* grid-template-rows: repeat(3, auto); */
+    grid-auto-rows: min-content;
+    /* grid-template-columns: 100%; */
 
-  margin: 16px;
-  /* Following are required to make all cards the same size */
-  width: 90%;
-  margin: 4px;
-  height: 90%;
-  border-radius: 24px;
-  background-color: var(--card-bg);
-  border: 24px solid var(--highlight);
-  border-width: 6px;
-}
+    margin: 16px;
+    /* Following are required to make all cards the same size */
+    width: 90%;
+    margin: 4px;
+    height: 90%;
+    border-radius: 24px;
+    background-color: var(--card-bg);
+    border: 24px solid var(--highlight);
+    border-width: 6px;
+  }
 
-.card > img {
-  object-fit: fill;
-  overflow: hidden;
-  border-radius: 17px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  overflow: hidden;
+  .card > img {
+    object-fit: fill;
+    overflow: hidden;
+    border-radius: 17px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    overflow: hidden;
+  }
 }
