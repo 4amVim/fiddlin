@@ -339,7 +339,8 @@ ul > p {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
   #item_grid {
     box-sizing: outline-box;
     display: grid;
@@ -347,26 +348,37 @@ ul > p {
     align-self: center;
     justify-content: space-around;
     grid-template-columns: auto;
-    grid-template-rows: repeat(auto-fill);
-    padding: 4px;
+    grid-template-rows: repeat(auto-fit, auto);
   }
 }
 @media only screen and (max-width: 200px) {
+  h1 {
+    font-size: 1ex;
+  }
 
-.card {
-  display: grid;
-  box-sizing: border-box;
-  grid-template-rows: 12fr 2fr 2fr;
-  grid-template-columns: 100%;
+  .card {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 100%;
 
-  margin: 16px;
-  /* Following are required to make all cards the same size */
-  width: 90%;
-  margin: 4px;
-  height: 50%;
-  border-radius: 24px;
-  background-color: var(--card-bg);
-  border: 24px solid var(--highlight);
-  border-width: 6px;
-}
+    margin: 16px;
+    /* Following are required to make all cards the same size */
+    width: 90%;
+    margin: 4px;
+    height: 90%;
+    border-radius: 24px;
+    background-color: var(--card-bg);
+    border: 24px solid var(--highlight);
+    border-width: 6px;
+  }
+
+  .card > img {
+    object-fit: fill;
+    overflow: hidden;
+    border-radius: 17px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    overflow: hidden;
+  }
 }
