@@ -117,10 +117,12 @@ span {
   /* font-size: clamp(16px, 5vw, 24px); */
   /* font-size: clamp(clamp(16px, 2vw, 10px), 3vw, 24px); */
   font-size: clamp(16px, 3vw, 24px);
+ 
   /* flex-shrink: 1; */
   margin: 0;
   font-weight: lighter;
   width: 100%;
+  text-align: center;
 }
 
 /* Navbar and its descendants */

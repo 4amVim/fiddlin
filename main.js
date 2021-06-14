@@ -92,13 +92,12 @@ function renderList ( cardsList ) {
 			BrandList.add( card.Make );
 			div.innerHTML = `\
                     <img src=${ card.Image } alt='${ card.Make + ' ' + card.Model }' >
-                    <h1 class="title">
-                        <span style="color:var(--txt-brand)">${ card.Make }<\span>
-                        <span style="color:var(--txt-model)"class="model">${ card.Model }<\span>
+                    <h1 style="color: var(--dark-text);">
+                        ${ card.Make } ${ card.Model }
                     </h1>
-                    <h1 style="display:flex; margin-left: 32px;">
-                        <span style="color:var(--txt-price);  display:block;">$${ card.Price }</span>
-                        <span style="color:var(--txt-years); margin-right: 16px;">${ age } years </span>
+                    <h1 style="display:flex;">
+                        <span style="color:var(--txt-price);"> $${ card.Price }</span>
+                        <span style="color:var(--txt-years);">${ age } years </span>
                     </h1>
                         `;
 			div.className = 'card';
