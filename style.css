@@ -80,10 +80,10 @@ html > * {
   flex-grow: 1;
   max-width: 100%;
   min-width: 100%;
+  border-radius: 20px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   overflow: hidden;
-  border-radius: 20px;
 }
 
 @media not all and (min-resolution: 0.001dpcm) {
@@ -336,10 +336,17 @@ ul > p {
 #search {
   flex-grow: 1;
   background-color: var(--on-navbar);
-  color: var(--dark-text);
+  color: var(--card-bg);
   box-shadow: none;
   border: none;
   margin: 0 4px;
   min-width: 10%;
+  min-height: 60%;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--card-bg);
+  opacity: 1; /* Firefox */
 }
 /* Portrait and Landscape */
