@@ -27,20 +27,18 @@
 <body>
     <div class="callout" onclick="this.style.display='none';">
         <h1>Welcome to AutoSale</h1>
-        <span class="closebtn" onclick="this.parentElement.style.display='none';">close</span>
-        <span>Finding a decent car is such a drag. We'll help you filter them via </span>
-        <span style="color:var(--text-brand-light)">model</span>
+        <h1 class="closebtn" onclick="this.parentElement.style.display='none';">close</h1>
+        <span>Finding a decent used car isn't easy nowadays. Using this tool, you can filter for
+            particular </span>
+        <span style="color:var(--txt-brand)">model</span>
         <span> and </span>
-        <span style="color:var(--text-model)">make</span>
-        <span>while sorting by</span>
-        <span style="color:var(--text-years)">age</span>
-        <span>as well as their</span>
-        <span style="color:var(--text-price)">price</span>
-        <span>.</span>
-        <span style="font-size: 16px;"> Click to dismiss</span>
-        <div class="callout-container">
-            <p> </p>
-        </div>
+        <span style="color:var(--txt-model)">make</span>.
+        <span>You can also sort by their</span>
+        <span style="color:var(--txt-years)">age</span>
+        <span>or by their</span>
+        <span style="color:var(--txt-price)">price</span>
+        <span>asked.</span>
+        <span style="font-size: 16px;"> Click this popup to dismiss it.</span>
     </div>
     <div id="item_grid"></div>
     <script>
@@ -63,7 +61,6 @@
             .
         </h3>
         <img src="https://cdn.discordapp.com/emojis/726345238406234232.gif?v=1" alt=":birbparty:">
-        <p style="color:var(--misc-light)"> no rights reserved by birbcorp</p>
     </footer>
     <nav id='navbar'>
         <button id='brand' onclick="dropup('brand')" class='brand' alt="How old is it?">Brands</button>

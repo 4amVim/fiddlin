@@ -62,41 +62,6 @@ function sort ( field ) {
 		} );
 	}
 
-	function toggleIcon ( remove ) {
-		console.log( 'gonna toggle the icon' );
-		window.requestAnimationFrame( () => {
-			console.log( 'gonna toggle the icon i swear' );
-			console.log( 'gonna toggle the icon for real' );
-			window.requestAnimationFrame( () => {
-				icon.innerHTML = 'trending_up';
-				icon.classList.add( 'icon' );
-				if ( icon.style.animationPlayState == 'paused' ) {
-					icon.style.animationPlayState = 'running';
-
-				} else {
-					console.log( 'gonna toggle the icon NOW' );
-					icon.animate( [
-						{ // from
-							'font-size': 0,
-							'max-width': 1
-						},
-						{ // to
-							'max-width': 'auto',
-							'font-size': '150%'
-						}
-					], {
-						delay: 30,
-						direction: remove ? 'reverse' : 'normal',
-						duration: 500,
-						fill: 'forwards',
-						easing: 'ease-in-out'
-					} );
-				}
-			} );
-		} );
-	}
-
-
 	const db = Data.data.slice();
 	//? Sort the list and redraw
 	if ( sort == null ) {
@@ -116,6 +81,7 @@ function renderList ( cardsList ) {
 		SortState = cardsList;//So that we always have a list with the latest Sort
 	}
 	const itemGrid = document.getElementById( 'item_grid' );
+
 	itemGrid.innerHTML = '';
 	for ( let i = 0; i < cardsList.length; i++ ) {
 		const card = cardsList[i];
@@ -126,19 +92,46 @@ function renderList ( cardsList ) {
 			BrandList.add( card.Make );
 			div.innerHTML = `\
                     <img src=${ card.Image } alt='${ card.Make + ' ' + card.Model }' >
-                    <h1>
+                    <h1 class="title">
                         <span style="color:var(--txt-brand)">${ card.Make }<\span>
                         <span style="color:var(--txt-model)"class="model">${ card.Model }<\span>
                     </h1>
-                    <h1>
-                        <span style="color:var(--txt-price)">$${ card.Price }</span>
-                        <span style="color:var(--txt-years)">${ age } years </span>
+                    <h1 style="display:flex; margin-left: 32px;">
+                        <span style="color:var(--txt-price);  display:block;">$${ card.Price }</span>
+                        <span style="color:var(--txt-years); margin-right: 16px;">${ age } years </span>
                     </h1>
                         `;
 			div.className = 'card';
+			div.onclick = function () {
+				window.open( `mailto:birb@birbcorp.com?subject=Buy ${ card.Make } ${ card.Model }&body=You had listed this car for $${ card.Price } on your website. I wanted to know if its still available.` );
+			}
 			itemGrid.appendChild( div );
 		}
 	}
+	window.requestAnimationFrame( function () {
+		let foo = document.getElementsByClassName( 'card' );
+		for ( const card of foo ) {
+			card.animate( [
+				{ // from
+					transform: 'scale( 1, 1 )'
+				},
+				{ // to
+					transform: 'scale( 0, 0 )'
+				},
+				{ // from
+					transform: 'scale( 1, 1 )'
+				},
+			], {
+				delay: 30,
+				duration: 500,
+				// fill: 'forwards',
+				easing: 'ease-in-out'
+			} );
+		}
+		// } );
+	} );
+
+
 	console.log( 'redrew' );
 }
 
