@@ -176,7 +176,7 @@ function dropup ( sortButton ) {
 			const status = MaskState.has( label ) ?
 				'check_box_outline_blank' : 'check_box';
 			let li = document.createElement( 'li' )
-			li.innerHTML = `<button onclick="toggleMask('${ label }')"><span onclick="toggleMask('${ label }')" id="${ label }" class="material-icons">${ status }</span>${ label } </button>`
+			li.innerHTML = `<button onclick="toggleMask('${ label }')"><span id="${ label }" class="material-icons">${ status }</span>${ label } </button>`
 			li.className = "tagSelect";
 			dropup.appendChild( li );
 		}
@@ -185,14 +185,17 @@ function dropup ( sortButton ) {
 
 
 function toggleMask ( name ) {
-	if ( MaskState.has( name ) ) {
-		document.getElementById( name ).innerHTML = 'check_box';
-		MaskState.delete( name );
-	} else {
-		document.getElementById( name ).innerHTML = 'check_box_outline_blank';
-		MaskState.add( name );
-	}
-	renderList();
+	console.log( 'I got toggled' + name );
+	window.requestAnimationFrame( () => {
+		if ( MaskState.has( name ) ) {
+			document.getElementById( name ).innerHTML = 'check_box';
+			MaskState.delete( name );
+		} else {
+			document.getElementById( name ).innerHTML = 'check_box_outline_blank';
+			MaskState.add( name );
+		}
+		renderList();
+	} );
 }
 
 function search () {
